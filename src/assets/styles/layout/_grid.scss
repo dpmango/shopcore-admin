@@ -1,0 +1,21 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+
+  // height: fill-available;
+  min-height: 100vh;
+  min-height: calc(var(--vh, 1vh) * 100);
+}
+
+.hidden {
+  display: none !important;
+}
+
+.visible {
+  display: block !important;
+}
+
+.container--modal {
+  position: static;
+  margin: auto;
+}

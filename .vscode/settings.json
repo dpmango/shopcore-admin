@@ -1,0 +1,13 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "yarn.lock": true,
+    "package-lock.json": true,
+    "auto-impoorts.d.ts": true,
+    ".eslintrc-auto-imports": true
+  },
+  "editor.formatOnSave": true
+}

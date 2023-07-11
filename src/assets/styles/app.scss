@@ -1,0 +1,36 @@
+/* stylelint-disable scss/at-import-no-partial-leading-underscore */
+
+@import 'utils';
+@import 'layout/_fonts';
+@import 'react-toastify/dist/ReactToastify.css';
+
+// @import 'react-quill/dist/quill.snow.css';
+
+@import 'components/_reset';
+
+// plagins
+
+// styles
+@import 'components/_variables';
+@import 'components/_text';
+@import 'components/_plugins-custom';
+@import 'components/_form';
+@import 'components/_components';
+@import 'components/_slider';
+@import 'components/_modal';
+@import 'components/_main';
+@import 'components/_media';
+
+// styles
+@import 'layout/_grid';
+@import 'addons';
+
+.light {
+  background-color: #fff;
+
+  @import 'components/_light';
+}
+
+:root {
+  --scrollbar-compensation: 0px;
+}

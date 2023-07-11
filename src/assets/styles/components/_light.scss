@@ -1,0 +1,389 @@
+body{
+  background-color: #fff;
+}
+
+.block-select__title, .content-descrp__text, .content-descrp__top, .content-info__date, .content-info__title, .content-user__text, .content-user__title{
+  color: #191B22;
+}
+
+.logo-def{
+  color: #191B22;
+  background: #FFF;
+}
+
+.sidebar{
+  background: rgba(#191B22, 0.02);
+}
+
+.links-def__link{
+  &:hover{
+    background: rgb(25 27 34 / 5%);
+  }
+
+  svg{
+    path{
+      stroke: #191B22;
+    }
+  }
+}
+
+.links-def__el.active{
+  .links-def__link{
+    svg{
+      path{
+        stroke: #fff;
+      }
+    }
+  }
+}
+
+.theme-btn__icon{
+  display: none;
+}
+
+.theme-btn__icon-dark{
+  display: block;
+}
+
+.theme-btn{
+  &:hover{
+    background: rgb(25 27 34 / 5%);
+  }
+}
+
+.checkbox-el__text, .count-text, .title-def{
+  color: #191B22;
+}
+
+.title-def__count{
+  color: #fff;
+}
+
+.tabs-def__el{
+  color: #191B22;
+  background: rgb(25 27 34 / 4%);
+
+  &:hover{
+    background: rgb(25 27 34 / 6%);
+  }
+
+  &.active{
+    color: #fff;
+    background: #191B22;
+  }
+}
+
+.checkbox-def__content{
+  background: rgb(25 27 34 / 5%);
+  border: 1px solid rgb(25 27 34 / 20%);
+}
+
+.select-def__top{
+  border: 1px solid rgb(25 27 34 / 10%);
+  background-color: #fff;
+}
+
+.select-def__text{
+  color: #191B22;
+}
+
+.select-def__arr{
+  rect{
+    fill: rgb(25 27 34);
+  }
+
+  path{
+    stroke: #191B22;
+  }
+}
+
+.select-def__dropdown{
+  background-color: #fff;
+  box-shadow: 0 10px 20px 0 rgb(0 0 0 / 20%);
+}
+
+.select-def__dropdown-el{
+  color: #191B22;
+
+  &.active, &:hover{
+    background: rgb(25 27 34 / 4%);
+  }
+
+  &.active{
+    color: rgba(#191B22, 0.6);
+  }
+}
+
+.select-def_2{
+  .select-def__top{
+    background: rgb(25 27 34 / 4%);
+    border-color: rgb(25 27 34 / 4%);
+  }
+
+  .select-def__arr{
+    rect{
+      fill: #fff;
+    }
+
+    path{
+      stroke: #191B22;
+    }
+  }
+}
+
+.select-def{
+  &:hover{
+    .select-def__top{
+      border-color:rgb(25 27 34 / 20%);
+    }
+  }
+}
+
+.content-el{
+  border-color: rgba(#191B22, 0.1)
+}
+
+.content-name__title{
+  color: #191B22;
+}
+
+.content-name__text{
+  color: #191B22;
+}
+
+.btn-def{
+  background: rgb(25 27 34 / 4%);
+
+  &:hover{
+    background: rgb(25 27 34 / 6%);
+  }
+}
+
+.btn-def__text{
+  color: #191B22;
+}
+
+.btn-def:not(.btn-def_red){
+  .btn-def__icon{
+    path{
+      stroke: #191B22;
+    }
+  }
+}
+
+.btn-def_red{
+  background: rgb(193 53 44 / 10%);
+}
+
+.btn-count__left, .btn-count__right{
+  color: #191B22;
+  background: rgb(25 27 34 / 4%);
+}
+
+.btn-count{
+  &:hover{
+    .btn-count__left, .btn-count__right{
+      background: rgb(25 27 34 / 6%);
+    }
+  }
+}
+
+.sidebar__title{
+  color: #191B22;
+}
+
+.lk-top-info__btn{
+  svg{
+    path{
+      stroke: #191B22;
+    }
+  }
+}
+
+.modal-content{
+  background-color: #F8F8F8;
+}
+
+.content-info-2{
+  color: #191B22;
+}
+
+.stat-descrp__text{
+  color: rgba(#191B22, 0.8);
+}
+
+.stat-descrp__text span{
+  color: #191B22;
+}
+
+.close-def{
+  background: #FFF;
+  border: 1px solid rgb(25 27 34 / 10%);
+}
+
+.close-def__icon{
+  path{
+    stroke: #191B22;
+  }
+}
+
+.modal-content__top{
+  border-color: #E2E3E3;
+}
+
+.block-info__title{
+  color: #191B22;
+}
+
+.textarea-def{
+  color: #191B22;
+  background: #FFF;
+  border: 1px solid rgb(25 27 34 / 15%);
+
+  &:focus{
+    border-radius: 10px;
+    border-color: #1F75EA;
+    box-shadow: 0 0 0 4px rgb(31 117 234 / 20%);
+  }
+}
+
+.content-table-info__text{
+  color: #191B22;
+}
+
+.content-table-info__val, .content-descrp__text, .content-table-info__info{
+  color: #191B22;
+}
+
+.content-el_bg{
+  background: rgb(25 27 34 / 5%);
+}
+
+.modal-mob__block-title{
+  color: #191B22;
+}
+
+.checkbox-el-2{
+  background: rgb(25 27 34 / 4%);
+}
+
+.checkbox-el-2__text{
+  font-weight: 500;
+  color: #191B22;
+}
+
+.select-def_full{
+  .select-def__top{
+    background: rgb(25 27 34 / 4%);
+    border-color: rgb(25 27 34 / 4%);
+  }
+
+  .select-def__arr rect{
+    fill: #fff;
+    fill-opacity: 1;
+  }
+}
+
+.text-def{
+  color:#191B22;
+}
+
+.block-info__title2, .block-info__text{
+  color:#191B22;
+}
+
+.text-info{
+  color:#191B22;
+}
+
+.info-stat__title, .info-stat__count, .acts-stat__el, .block-stat-info__title, .block-stat-info__text, .block-stat-info__count-text{
+  color: #191B22;
+}
+
+.block-stat-info{
+  border-color: rgb(25 27 34 / 10%);
+}
+
+.checkbox-el-3__text{
+  color: #191B22;
+}
+
+.checkbox-el-3{
+  .checkbox-def__content{
+    background-color: transparent;
+  }
+}
+
+.prev-btn{
+  background: rgb(25 27 34 / 4%);
+
+  path{
+    stroke: #191B22;
+  }
+
+  &:hover{
+    background: rgb(25 27 34 / 6%);
+  }
+}
+
+.info-descrp__title, .info-descrp__text, .stat-top-info__title{
+  color: #191B22;
+}
+
+.btn-def-icon{
+  background: rgb(25 27 34 / 4%);
+
+  path{
+    stroke: #191B22;
+  }
+}
+
+.content-user-2__name{
+  color: #191B22;
+}
+
+.content-user-2__info{
+  color: #191B22;
+  opacity: 0.8;
+}
+
+.content-user-3__text{
+  color: #191B22;
+  opacity: 0.8;
+}
+
+.content-user-3__name{
+  color: #191B22;
+}
+
+@media screen and (width <= 768px){
+  .content-descrp__title, .content-descrp__val{
+    color: #191B22;
+  }
+
+  .sidebar{
+    background-color:transparent;
+  }
+
+  .modal-content {
+    background: #FFF;
+  }
+
+  .close-def{
+    background: rgb(25 27 34 / 4%);
+    border-color: rgb(25 27 34 / 4%);
+  }
+
+  .links-def-mob__el:not(.active){
+    .links-def-mob__link{
+      color: #191B22;
+      background: rgb(25 27 34 / 4%);
+    }
+
+    .links-def-mob__icon{
+      path{
+        stroke: #191B22;
+      }
+    }
+  }
+}
