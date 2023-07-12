@@ -106,6 +106,7 @@
     "closeModal": true,
     "setModal": true,
     "setTheme": true,
-    "useTheme": true
+    "useTheme": true,
+    "orderPostproneApi": true
   }
 }

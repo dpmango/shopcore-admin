@@ -52,7 +52,7 @@ export const StatCard: React.FC = () => {
             </Link>
             <button
               className="content-btns__btn btn-def btn-modal"
-              onClick={() => dispatch(setModal('modal-access'))}
+              onClick={() => dispatch(setModal({ name: 'modal-access' }))}
             >
               <SettingsSvg className="btn-def__icon" />
 

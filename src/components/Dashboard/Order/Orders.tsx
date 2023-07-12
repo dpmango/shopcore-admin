@@ -19,7 +19,7 @@ export const DashboardOrders: React.FC = () => {
             Заказы<span className="count-text title-def__count">{orders.length}</span>
             <div
               className="lk-top-info__btn btn-modal"
-              onClick={() => dispatch(setModal('modal-settings'))}
+              onClick={() => dispatch(setModal({ name: 'modal-settings' }))}
             >
               <SettingsSvg />
             </div>

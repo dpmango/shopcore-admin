@@ -9,6 +9,7 @@ import { IUser } from '@/core/interface/Auth'
 export interface ISession {
   user: IUser | null
   modal: string | null
+  modalParams: any
   theme: 'dark' | 'light'
 }
 
@@ -21,6 +22,7 @@ export const getUserService = createAsyncThunk('chat/me', async () => {
 const initialState: ISession = {
   user: null,
   modal: null,
+  modalParams: {},
   theme: 'dark',
 }
 
@@ -31,8 +33,9 @@ export const chatState = createSlice({
     resetUser(state, action: PayloadAction) {
       Cookies.remove('auth-shopcorev2')
     },
-    setModal(state, action: PayloadAction<string>) {
-      state.modal = action.payload
+    setModal(state, action: PayloadAction<{ name: string; params?: any }>) {
+      state.modal = action.payload.name
+      state.modalParams = action.payload.params || {}
     },
     closeModal(state) {
       state.modal = null

@@ -15,7 +15,7 @@ export const DashboardStat: React.FC = () => {
             Статистика
             <div
               className="lk-top-info__btn lk-top-info__btn_stat btn-modal"
-              onClick={() => dispatch(setModal('modal-stat'))}
+              onClick={() => dispatch(setModal({ name: 'modal-stat' }))}
             >
               <SettingsSvg />
             </div>

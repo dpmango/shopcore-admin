@@ -20,7 +20,7 @@ export const DashboardStatOperator: React.FC = () => {
             <div className="stat-top-info__title">Статистика оператора</div>
             <button
               className="stat-top-info__btn btn-def-icon btn-modal"
-              onClick={() => dispatch(setModal('mobile-operator'))}
+              onClick={() => dispatch(setModal({ name: 'mobile-operator' }))}
             >
               <SettingsSvg />
             </button>

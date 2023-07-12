@@ -17,3 +17,18 @@ export const fetchOrdersApi = async ({ type }: IFetchOrdersPayload) => {
 
   return { data, error: !!data }
 }
+
+export interface IORderPostpronePayload {
+  id: string
+  reason: string
+  minutes: number
+}
+
+export const orderPostproneApi = async (payload: IORderPostpronePayload) => {
+  const { data, error } = (await api(`order/postprone`, {
+    method: 'POST',
+    body: payload,
+  })) as IApiResponse<IOrderDto[]>
+
+  return { data, error: !!data }
+}

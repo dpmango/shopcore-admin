@@ -35,7 +35,7 @@ export const LayoutSidebar: React.FC = () => {
                 <a
                   className="links-def__link"
                   href="#"
-                  onClick={() => dispatch(setModal('mobile-menu'))}
+                  onClick={() => dispatch(setModal({ name: 'mobile-menu' }))}
                 >
                   <OrdersSvg />
                 </a>

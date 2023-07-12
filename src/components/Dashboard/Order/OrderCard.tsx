@@ -51,7 +51,7 @@ export const OrderCard: React.FC<IOrderCardProps> = ({ id, where, item, cooldown
             </div>
             <div
               className="content-btns__btn btn-count btn-modal"
-              onClick={() => dispatch(setModal('modal-history'))}
+              onClick={() => dispatch(setModal({ name: 'modal-history' }))}
             >
               <div className="btn-count__left">История</div>
               <div className="btn-count__right">0</div>
@@ -71,13 +71,18 @@ export const OrderCard: React.FC<IOrderCardProps> = ({ id, where, item, cooldown
           </div>
         </div>
         <div className="order-el__block order-el__block_6">
-          <div className="btn-count btn-modal" onClick={() => dispatch(setModal('modal-postpone'))}>
+          <div
+            className="btn-count btn-modal"
+            onClick={() =>
+              dispatch(setModal({ name: 'modal-postpone', params: { id: id, created } }))
+            }
+          >
             <div className="btn-count__left">Отложить</div>
             <div className="btn-count__right">0</div>
           </div>
           <div
             className="order-el__btnmob btn-count btn-modal"
-            onClick={() => dispatch(setModal('modal-history'))}
+            onClick={() => dispatch(setModal({ name: 'modal-history' }))}
           >
             <div className="btn-count__left">История</div>
             <div className="btn-count__right">0</div>
