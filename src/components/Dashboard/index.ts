@@ -5,7 +5,6 @@ export { ModalCancelConfirm } from './Modal/ModalCancelConfirm'
 export { ModalHistory } from './Modal/ModalHistory'
 export { ModalPostpone } from './Modal/ModalPostpone'
 export { DashboardNotifications } from './Notification/Notifications'
-
 export { OrderCard } from './Order/OrderCard'
 export { DashboardOrders } from './Order/Orders'
 export { StatCard } from './Stat/StatCard'
