@@ -6,7 +6,7 @@ export const NotificationsPage: React.FC = () => {
   return (
     <Layout>
       <Helmet>
-        <title>Отмены - {import.meta.env.VITE_APP_APP_NAME}</title>
+        <title>Уведомления - {import.meta.env.VITE_APP_APP_NAME}</title>
       </Helmet>
 
       <DashboardNotifications />

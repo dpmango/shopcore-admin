@@ -81,7 +81,11 @@ export const DashboardStat: React.FC = () => {
                   <div className="stat-el__content">
                     <div className="stat-el__block stat-el__block_1">
                       <div className="content-user">
-                        <img className="content-user__img" src="../img/pr.png" alt="" />
+                        <img
+                          className="content-user__img"
+                          src="https://randomuser.me/api/portraits/men/74.jpg"
+                          alt=""
+                        />
                         <div className="content-user__body">
                           <div className="content-user__title">Жора</div>
                           <div className="content-user__text">3302468557</div>
@@ -221,7 +225,11 @@ export const DashboardStat: React.FC = () => {
                   <div className="stat-el__content">
                     <div className="stat-el__block stat-el__block_1">
                       <div className="content-user">
-                        <img className="content-user__img" src="../img/pr.png" alt="" />
+                        <img
+                          className="content-user__img"
+                          src="https://randomuser.me/api/portraits/men/74.jpg"
+                          alt=""
+                        />
                         <div className="content-user__body">
                           <div className="content-user__title">Жора</div>
                           <div className="content-user__text">3302468557</div>

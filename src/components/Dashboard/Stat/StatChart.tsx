@@ -1,3 +1,5 @@
+import { UiSelect } from '@c/Ui'
+import { CheckmarkCheckboxSvg } from '@c/Ui/Icons'
 import cns from 'classnames'
 
 export const DashboardStatChart: React.FC = () => {
@@ -52,7 +54,11 @@ export const DashboardStatChart: React.FC = () => {
           </button>
         </div>
         <div className="stat-top-info__user content-user-2">
-          <img className="content-user-2__img" src="../img/pr.png" alt="" />
+          <img
+            className="content-user-2__img"
+            src="https://randomuser.me/api/portraits/men/74.jpg"
+            alt=""
+          />
           <div className="content-user-2__name">Жора</div>
           <div className="content-user-2__info">3302468557</div>
         </div>
@@ -66,7 +72,11 @@ export const DashboardStatChart: React.FC = () => {
               Закреплен <span>за менеджером</span>
             </div>
             <div className="content-user-3__user">
-              <img className="content-user-3__img" src="../img/pr.png" alt="" />
+              <img
+                className="content-user-3__img"
+                src="https://randomuser.me/api/portraits/men/74.jpg"
+                alt=""
+              />
               <div className="content-user-3__name">Светлана</div>
             </div>
           </div>
@@ -80,33 +90,15 @@ export const DashboardStatChart: React.FC = () => {
               <li className="tabs-def__el">Игры</li>
               <li className="tabs-def__el">Дополнительно</li>
             </ul>
-            <div className="lk-top-acts__select select-def select-def_3">
-              <div className="select-def__top">
-                <div className="select-def__val select-def__text">22 июня ... 15 июня</div>
-                <svg
-                  className="select-def__arr"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <rect width="20" height="20" rx="10" fill="white" fillOpacity="0.1" />
-                  <path
-                    d="M6 8L9.98617 12L13.9723 8"
-                    stroke="white"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </div>
-              <ul className="select-def__dropdown">
-                <li className="select-def__dropdown-el">22 июня ... 15 июня</li>
-                <li className="select-def__dropdown-el">10 мин</li>
-                <li className="select-def__dropdown-el">15 мин</li>
-              </ul>
-            </div>
+            <UiSelect
+              value={'range'}
+              className={'lk-top-acts__select select-def_3'}
+              options={[
+                { label: '22 июня ... 15 июня<', value: 'range' },
+                { label: 'B', value: 30 },
+                { label: 'C', value: 15 },
+              ]}
+            />
           </div>
           <div className="lk-top-acts__right"></div>
         </div>
@@ -126,22 +118,7 @@ export const DashboardStatChart: React.FC = () => {
                     <span className="checkbox-el-3__btn checkbox-def">
                       <input className="checkbox-def__inp" type="checkbox" name="inp-status" />
                       <span className="checkbox-def__content">
-                        <svg
-                          className="checkbox-def__dec"
-                          width="12"
-                          height="10"
-                          viewBox="0 0 12 10"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M1.625 5.83738L3.44792 8.38592C3.59375 8.60437 3.8125 8.75 4.03125 8.75C4.25 8.75 4.54167 8.67718 4.6875 8.45874L10.375 1.25"
-                            stroke="white"
-                            strokeWidth="1.5"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                        </svg>
+                        <CheckmarkCheckboxSvg />
                       </span>
                     </span>
                     <span className="checkbox-el-3__text">Сделано заказов</span>
@@ -170,22 +147,7 @@ export const DashboardStatChart: React.FC = () => {
                     <span className="checkbox-el-3__btn checkbox-def">
                       <input className="checkbox-def__inp" type="checkbox" name="inp-status" />
                       <span className="checkbox-def__content">
-                        <svg
-                          className="checkbox-def__dec"
-                          width="12"
-                          height="10"
-                          viewBox="0 0 12 10"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M1.625 5.83738L3.44792 8.38592C3.59375 8.60437 3.8125 8.75 4.03125 8.75C4.25 8.75 4.54167 8.67718 4.6875 8.45874L10.375 1.25"
-                            stroke="white"
-                            strokeWidth="1.5"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                        </svg>
+                        <CheckmarkCheckboxSvg />
                       </span>
                     </span>
                     <span className="checkbox-el-3__text">Отправил в AFK</span>
@@ -197,22 +159,7 @@ export const DashboardStatChart: React.FC = () => {
                     <span className="checkbox-el-3__btn checkbox-def">
                       <input className="checkbox-def__inp" type="checkbox" name="inp-status" />
                       <span className="checkbox-def__content">
-                        <svg
-                          className="checkbox-def__dec"
-                          width="12"
-                          height="10"
-                          viewBox="0 0 12 10"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M1.625 5.83738L3.44792 8.38592C3.59375 8.60437 3.8125 8.75 4.03125 8.75C4.25 8.75 4.54167 8.67718 4.6875 8.45874L10.375 1.25"
-                            stroke="white"
-                            strokeWidth="1.5"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                        </svg>
+                        <CheckmarkCheckboxSvg />
                       </span>
                     </span>
                     <span className="checkbox-el-3__text">Отправил в Проблемные</span>
@@ -224,22 +171,7 @@ export const DashboardStatChart: React.FC = () => {
                     <span className="checkbox-el-3__btn checkbox-def">
                       <input className="checkbox-def__inp" type="checkbox" name="inp-status" />
                       <span className="checkbox-def__content">
-                        <svg
-                          className="checkbox-def__dec"
-                          width="12"
-                          height="10"
-                          viewBox="0 0 12 10"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M1.625 5.83738L3.44792 8.38592C3.59375 8.60437 3.8125 8.75 4.03125 8.75C4.25 8.75 4.54167 8.67718 4.6875 8.45874L10.375 1.25"
-                            stroke="white"
-                            strokeWidth="1.5"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                        </svg>
+                        <CheckmarkCheckboxSvg />
                       </span>
                     </span>
                     <span className="checkbox-el-3__text">Отправил в Обратно</span>

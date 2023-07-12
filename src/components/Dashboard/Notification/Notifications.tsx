@@ -1,5 +1,5 @@
-import cns from 'classnames'
 import { WarningSvg } from '@c/Ui/Icons'
+import cns from 'classnames'
 
 export const DashboardNotifications: React.FC = () => {
   return (
@@ -15,7 +15,11 @@ export const DashboardNotifications: React.FC = () => {
             <div className="notifications-el__content">
               <div className="notifications-el__block notifications-el__block_1">
                 <div className="content-user">
-                  <img className="content-user__img" src="../img/pr.png" alt="" />
+                  <img
+                    className="content-user__img"
+                    src="https://randomuser.me/api/portraits/men/74.jpg"
+                    alt=""
+                  />
                   <div className="content-user__body">
                     <div className="content-user__title">Жора</div>
                     <div className="content-user__text">3302468557</div>
@@ -43,7 +47,11 @@ export const DashboardNotifications: React.FC = () => {
             <div className="notifications-el__content">
               <div className="notifications-el__block notifications-el__block_1">
                 <div className="content-user">
-                  <img className="content-user__img" src="../img/pr.png" alt="" />
+                  <img
+                    className="content-user__img"
+                    src="https://randomuser.me/api/portraits/men/74.jpg"
+                    alt=""
+                  />
                   <div className="content-user__body">
                     <div className="content-user__title">Жора</div>
                     <div className="content-user__text">3302468557</div>
@@ -69,7 +77,11 @@ export const DashboardNotifications: React.FC = () => {
             <div className="notifications-el__content">
               <div className="notifications-el__block notifications-el__block_1">
                 <div className="content-user">
-                  <img className="content-user__img" src="../img/pr.png" alt="" />
+                  <img
+                    className="content-user__img"
+                    src="https://randomuser.me/api/portraits/men/74.jpg"
+                    alt=""
+                  />
                   <div className="content-user__body">
                     <div className="content-user__title">Жора</div>
                     <div className="content-user__text">3302468557</div>

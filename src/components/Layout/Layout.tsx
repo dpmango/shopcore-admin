@@ -1,7 +1,5 @@
+import { LayoutSidebar, ModalMenu } from '@c/Layout'
 import cns from 'classnames'
-
-import { LayoutModals } from './Modals'
-import { LayoutSidebar } from './Sidebar'
 
 interface ILayout {
   children: React.ReactElement[] | React.ReactElement
@@ -17,7 +15,13 @@ export const Layout: React.FC<ILayout> = ({ children }) => {
         </div>
       </div>
 
-      <LayoutModals />
+      <ModalMenu />
+
+      <div className="tooltip-def" id="chartjs-tooltip">
+        <div className="tooltip-def__title"></div>
+        <div className="tooltip-def__date"></div>
+        <div className="tooltip-def__val"></div>
+      </div>
     </>
   )
 }

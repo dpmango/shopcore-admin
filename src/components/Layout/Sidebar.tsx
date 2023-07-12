@@ -6,43 +6,21 @@ import {
   ThemeDark,
   ThemeLight,
 } from '@c/Ui/Icons'
+import { useWindowSize } from '@uidotdev/usehooks'
 import cns from 'classnames'
 
 export const LayoutSidebar: React.FC = () => {
   const { user } = useAppSelector((state) => state.sesionState)
   const dispatch = useAppDispatch()
   const { pathname } = useLocation()
+  const { width } = useWindowSize()
 
-  const toggleTheme = useCallback(() => {
-    const $html = document.querySelector('html')
-    $html?.classList.toggle('light')
-
-    if (localStorageGet('theme') === 'light') {
-      localStorageSet('theme', 'dark')
-    } else {
-      localStorageSet('theme', 'light')
-    }
-    // TODO + plus charts charts js colors
-  }, [])
+  const { toggleTheme, setInitialTheme } = useTheme()
 
   useEffect(() => {
-    const $html = document.querySelector('html')
-    if (localStorageGet('theme') === 'dark') {
-      $html?.classList.remove('light')
-    } else {
-      $html?.classList.add('light')
-    }
-
+    setInitialTheme()
     dispatch(getUserService())
   }, [])
-
-  // $('.sidebar .links-def__link').on('click', function () {
-  //   if ($(window).width() <= 768) {
-  //     $('#modal-menu').fadeIn(300)
-  //     _this.setNoscroll()
-  //     return false
-  //   }
-  // })
 
   return (
     <div className="lk-content__sidebar sidebar">
@@ -52,11 +30,24 @@ export const LayoutSidebar: React.FC = () => {
         </div>
         <div className="sidebar__middle">
           <ul className="links-def">
-            <li className={cns('links-def__el', pathname === '/' && 'active')}>
-              <NavLink className="links-def__link" to="/">
-                <OrdersSvg />
-              </NavLink>
-            </li>
+            {width <= 768 ? (
+              <li className={cns('links-def__el active')}>
+                <a
+                  className="links-def__link"
+                  href="#"
+                  onClick={() => dispatch(setModal('mobile-menu'))}
+                >
+                  <OrdersSvg />
+                </a>
+              </li>
+            ) : (
+              <li className={cns('links-def__el', pathname === '/' && 'active')}>
+                <NavLink className="links-def__link" to="/">
+                  <OrdersSvg />
+                </NavLink>
+              </li>
+            )}
+
             <li className={cns('links-def__el', pathname === '/cancellations' && 'active')}>
               <NavLink className="links-def__link" to="/cancellations">
                 <CancelationsSvg />

@@ -26,7 +26,11 @@ export const OrderCard: React.FC<IOrderCardProps> = ({ id, where, item, cooldown
         </div>
         <div className="order-el__block order-el__block_3">
           <div className="content-user">
-            {/* <img className="content-user__img" src="../img/pr.png" alt="" /> */}
+            <img
+              className="content-user__img"
+              src="https://randomuser.me/api/portraits/men/74.jpg"
+              alt=""
+            />
             <div className="content-user__body">
               <div className="content-user__title">{where.name}</div>
               <div className="content-user__text">{dateAgo(where.time)}</div>

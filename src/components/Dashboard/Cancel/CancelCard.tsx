@@ -22,7 +22,11 @@ export const CancelCard: React.FC<IOrderCardProps> = ({ id, where, item, cooldow
         <div className="cancel-el__block cancel-el__block_2">
           <div className="cancel-el__userinfo">
             <div className="content-user">
-              <img className="content-user__img" src="../img/pr.png" alt="" />
+              <img
+                className="content-user__img"
+                src="https://randomuser.me/api/portraits/men/74.jpg"
+                alt=""
+              />
               <div className="content-user__body">
                 <div className="content-user__title">Светлана</div>
                 <div className="content-user__text">Команда Harold</div>

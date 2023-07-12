@@ -436,17 +436,17 @@ export const CheckmarkCheckboxSvg = () => (
 
 export const CaretSvg = () => (
   <svg
-    className="block-select__arr"
+    className="select-def__arr"
     width="20"
     height="20"
     viewBox="0 0 20 20"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <rect width="20" height="20" rx="10" fill="#191B22" fillOpacity="0.05" />
+    <rect width="20" height="20" rx="10" fill="white" fillOpacity="0.1" />
     <path
       d="M6 8L9.98617 12L13.9723 8"
-      stroke="#191B22"
+      stroke="white"
       strokeWidth="1.5"
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -530,19 +530,25 @@ export const CopySvg = () => (
 export const CloseSvg = () => (
   <svg
     className="close-def__icon"
-    width="16"
-    height="16"
-    viewBox="0 0 16 16"
+    width="18"
+    height="18"
+    viewBox="0 0 18 18"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
-      d="M0.92849 2.34315C0.537965 1.95262 0.537965 1.31946 0.92849 0.928932C1.31901 0.538408 1.95218 0.538408 2.3427 0.928932L15.0706 13.6569C15.4611 14.0474 15.4611 14.6805 15.0706 15.0711C14.6801 15.4616 14.0469 15.4616 13.6564 15.0711L0.92849 2.34315Z"
-      fill="#322D2D"
+      d="M1 1L16.9447 17"
+      stroke="white"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
-      d="M13.6564 0.928932C14.0469 0.538408 14.6801 0.538408 15.0706 0.928932C15.4611 1.31946 15.4611 1.95262 15.0706 2.34315L2.3427 15.0711C1.95218 15.4616 1.31901 15.4616 0.928489 15.0711C0.537964 14.6805 0.537965 14.0474 0.928489 13.6569L13.6564 0.928932Z"
-      fill="#322D2D"
+      d="M16.9447 1L1 17"
+      stroke="white"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 )
@@ -615,3 +621,223 @@ export const ClockSvg = () => (
     />
   </svg>
 )
+
+export const OrdersMobileSvg = () => (
+  <svg width="20" height="22" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M6.45833 4.125H3.125C2.79348 4.125 2.47554 4.2567 2.24112 4.49112C2.0067 4.72554 1.875 5.04348 1.875 5.375V19.125C1.875 19.4565 2.0067 19.7745 2.24112 20.0089C2.47554 20.2433 2.79348 20.375 3.125 20.375H16.875C17.2065 20.375 17.5245 20.2433 17.7589 20.0089C17.9933 19.7745 18.125 19.4565 18.125 19.125V5.375C18.125 5.04348 17.9933 4.72554 17.7589 4.49112C17.5245 4.2567 17.2065 4.125 16.875 4.125H13.5417"
+      stroke="white"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M13.2666 4.95C13.2248 5.0738 13.1452 5.18138 13.0391 5.25762C12.933 5.33385 12.8056 5.3749 12.6749 5.375H7.32493C7.19426 5.3749 7.0669 5.33385 6.96077 5.25762C6.85464 5.18138 6.77508 5.0738 6.73326 4.95L5.89993 2.45C5.86765 2.35574 5.85837 2.25513 5.87286 2.15656C5.88736 2.05799 5.92521 1.96431 5.98326 1.88333C6.04235 1.80401 6.11897 1.73941 6.20716 1.6946C6.29534 1.64979 6.39268 1.62597 6.49159 1.625H13.5083C13.6072 1.62597 13.7045 1.64979 13.7927 1.6946C13.8809 1.73941 13.9575 1.80401 14.0166 1.88333C14.0746 1.96431 14.1125 2.05799 14.127 2.15656C14.1415 2.25513 14.1322 2.35574 14.0999 2.45L13.2666 4.95Z"
+      stroke="white"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M15.625 6.625V14.8583C15.6247 15.1897 15.4928 15.5075 15.2583 15.7417L13.4917 17.5083C13.2575 17.7428 12.9397 17.8747 12.6083 17.875H5C4.83491 17.8728 4.67719 17.8063 4.56044 17.6896C4.4437 17.5728 4.37716 17.4151 4.375 17.25V6.625"
+      stroke="white"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M11.4583 17.8747V14.958C11.4583 14.6265 11.5899 14.3085 11.8244 14.0741C12.0588 13.8397 12.3767 13.708 12.7083 13.708H15.6249"
+      stroke="white"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+)
+
+export const CancelationsMobileSvg = () => (
+  <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M14.4036 5.11426C14.4036 4.80523 14.4952 4.50313 14.6669 4.24618C14.8386 3.98923 15.0826 3.78896 15.3681 3.67069C15.6536 3.55243 15.9678 3.52149 16.2709 3.58178C16.574 3.64207 16.8524 3.79088 17.071 4.0094C17.2895 4.22793 17.4383 4.50633 17.4986 4.80943C17.5588 5.11253 17.5279 5.42669 17.4096 5.7122C17.2914 5.99771 17.0911 6.24174 16.8341 6.41343C16.5772 6.58512 16.2751 6.67676 15.9661 6.67676"
+      stroke="white"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M15.9661 9.17676C15.7935 9.17676 15.6536 9.03684 15.6536 8.86426C15.6536 8.69167 15.7935 8.55176 15.9661 8.55176"
+      stroke="white"
+      strokeWidth="1.5"
+    />
+    <path
+      d="M15.9661 9.17676C16.1386 9.17676 16.2786 9.03684 16.2786 8.86426C16.2786 8.69167 16.1386 8.55176 15.9661 8.55176"
+      stroke="white"
+      strokeWidth="1.5"
+    />
+    <path
+      d="M18.616 9.53358C19.3233 9.00408 19.8544 8.27359 20.1399 7.43754C20.4256 6.6015 20.4524 5.69875 20.2171 4.8472C19.9817 3.99565 19.4949 3.23487 18.8205 2.66422C18.146 2.09356 17.3152 1.73956 16.4364 1.64843C15.5576 1.55731 14.6718 1.7333 13.8946 2.15342C13.1174 2.57354 12.4849 3.21827 12.0799 4.00341C11.6747 4.78854 11.5158 5.67759 11.6238 6.55446C11.7318 7.43132 12.1017 8.25523 12.6852 8.9186L12.1385 12.0678L14.2485 10.7669"
+      stroke="white"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M7.85913 16.625C9.4124 16.625 10.6716 15.3658 10.6716 13.8125C10.6716 12.2592 9.4124 11 7.85913 11C6.30583 11 5.04663 12.2592 5.04663 13.8125C5.04663 15.3658 6.30583 16.625 7.85913 16.625Z"
+      stroke="white"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M12.2159 20.3695C11.7699 19.6096 11.1328 18.9795 10.3679 18.5419C9.60308 18.1043 8.73711 17.8744 7.85593 17.875C6.97476 17.8756 6.10906 18.1067 5.3448 18.5453C4.58054 18.9839 3.94431 19.6148 3.49927 20.3753"
+      stroke="white"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M15.9993 12.875V20.375"
+      stroke="white"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M1.62427 20.375V4.125C1.62427 3.46196 1.88766 2.82607 2.3565 2.35723C2.82534 1.88839 3.46122 1.625 4.12427 1.625H10.3742"
+      stroke="white"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M1.62427 5.43457H9.12426"
+      stroke="white"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+)
+export const NotificationMobileSvg = () => (
+  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M5.67845 3.55469C4.81329 4.03511 4.10019 4.7485 3.62012 5.61385"
+      stroke="white"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M4.97917 1.25C4.09125 1.50245 3.28258 1.97763 2.62992 2.63044C1.97725 3.28325 1.50225 4.09203 1.25 4.98"
+      stroke="white"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M3.75 15H16.25"
+      stroke="white"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M16.25 15.0004C16.25 15.0004 15 13.912 15 10.0004C15 6.87535 12.865 4.11035 10 4.11035C7.135 4.11035 5 6.87535 5 10.0004C5 13.9329 3.75 15.0004 3.75 15.0004"
+      stroke="white"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M11.25 17.5C11.25 17.8315 11.1183 18.1495 10.8839 18.3839C10.6495 18.6183 10.3315 18.75 10 18.75C9.66848 18.75 9.35054 18.6183 9.11612 18.3839C8.8817 18.1495 8.75 17.8315 8.75 17.5"
+      stroke="white"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M10 4.11V2.5"
+      stroke="white"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M14.3218 3.55469C14.7515 3.79463 15.1463 4.0924 15.4951 4.43969C15.843 4.78828 16.1408 5.18343 16.3801 5.61385"
+      stroke="white"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M15.0208 1.25C15.9087 1.50245 16.7173 1.97763 17.37 2.63044C18.0227 3.28325 18.4977 4.09203 18.7499 4.98"
+      stroke="white"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+)
+
+export const StatsMobileSvg = () => (
+  <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M13.5 20.375H8.5L9.125 16.625H12.875L13.5 20.375Z"
+      stroke="white"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M6.625 20.375H15.375"
+      stroke="white"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M17.875 1.625H4.125C2.74429 1.625 1.625 2.74429 1.625 4.125V14.125C1.625 15.5057 2.74429 16.625 4.125 16.625H17.875C19.2557 16.625 20.375 15.5057 20.375 14.125V4.125C20.375 2.74429 19.2557 1.625 17.875 1.625Z"
+      stroke="white"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M1.625 9.95859L4.95833 6.62526C5.07552 6.50822 5.23437 6.44248 5.4 6.44248C5.56563 6.44248 5.72448 6.50822 5.84167 6.62526L7.43333 8.26693C7.55052 8.38397 7.70937 8.44971 7.875 8.44971C8.04063 8.44971 8.19948 8.38397 8.31667 8.26693L11.65 4.93359"
+      stroke="white"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M1.625 13.292H20.375"
+      stroke="white"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M12.875 8.29199V10.5837"
+      stroke="white"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M17.875 8.29199V10.5837"
+      stroke="white"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M15.375 6.41699V10.5837"
+      stroke="white"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+)
+// export const ThemeMobileDark = () => ()
+// export const ThemeMobileLight = () => ()

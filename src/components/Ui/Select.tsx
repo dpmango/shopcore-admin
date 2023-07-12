@@ -6,7 +6,8 @@ import cns from 'classnames'
 
 interface ISelectProps {
   className?: string
-  value: string
+  value: string | number
+  widthLimiter?: boolean
   options: ISelectOption[]
   disabled?: boolean
   placeholder?: any
@@ -26,6 +27,7 @@ export const Select: React.FC<ISelectProps> = ({
   options,
   disabled,
   placeholder,
+  widthLimiter,
   onSelect,
 }) => {
   const [opened, setOpened] = useState<boolean>(false)
@@ -70,13 +72,20 @@ export const Select: React.FC<ISelectProps> = ({
   }, [opened])
 
   return (
-    <div className={cns('select-def', disabled && 'select--disabled', className)} ref={wrapperRef}>
-      {/* <input className="block-select__inp" type="hidden" /> */}
+    <div
+      className={cns(
+        'select-def',
+        widthLimiter && 'select-def_width',
+        disabled && 'select--disabled',
+        className,
+      )}
+      ref={wrapperRef}
+    >
       <div
         className={cns('select-def__top', opened && '_active')}
         onClick={() => setOpened(!opened)}
       >
-        <div className="block-select__text block-select__val">{currentTitle}</div>
+        <div className="block-select__text select-def__val">{currentTitle}</div>
         <CaretSvg />
       </div>
       <animated.ul

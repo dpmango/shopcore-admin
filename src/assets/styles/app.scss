@@ -2,21 +2,13 @@
 
 @import 'utils';
 @import 'layout/_fonts';
+@import 'layout/_reset';
 @import 'react-toastify/dist/ReactToastify.css';
 
-// @import 'react-quill/dist/quill.snow.css';
-
-@import 'components/_reset';
-
-// plagins
-
 // styles
-@import 'components/_variables';
 @import 'components/_text';
-@import 'components/_plugins-custom';
 @import 'components/_form';
 @import 'components/_components';
-@import 'components/_slider';
 @import 'components/_modal';
 @import 'components/_main';
 @import 'components/_media';
@@ -28,6 +20,7 @@
 .light {
   background-color: #fff;
 
+  /* stylelint-disable-next-line no-invalid-position-at-import-rule */
   @import 'components/_light';
 }
 

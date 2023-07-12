@@ -102,6 +102,10 @@
     "timestampToMinutes": true,
     "Plurize": true,
     "formatPrice": true,
-    "dateAgo": true
+    "dateAgo": true,
+    "closeModal": true,
+    "setModal": true,
+    "setTheme": true,
+    "useTheme": true
   }
 }
