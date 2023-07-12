@@ -12,11 +12,17 @@ interface IFilter {
 
 export interface IOrders {
   orders: any[]
+  loading: {
+    order: boolean
+  }
   filter: IFilter
 }
 
 const initialState: IOrders = {
   orders: [],
+  loading: {
+    order: false,
+  },
   filter: {
     type: null,
   },
@@ -41,12 +47,17 @@ export const ordersStore = createSlice({
     },
   },
   extraReducers: (builder) => {
+    builder.addCase(getOrdersService.pending, (state) => {
+      state.loading.order = true
+    })
     builder.addCase(
       getOrdersService.fulfilled,
       (state, action: PayloadAction<IOrderDto[] | null>) => {
         if (action.payload) {
           state.orders = action.payload.sort((a, b) => (a.created < b.created ? 1 : -1))
         }
+
+        state.loading.order = false
       },
     )
   },

@@ -22,6 +22,12 @@ export const StatsPageOperator: React.FC = () => {
       </Helmet>
 
       <DashboardStatOperator />
+
+      <div className="tooltip-def" id="chartjs-tooltip">
+        <div className="tooltip-def__title"></div>
+        <div className="tooltip-def__date"></div>
+        <div className="tooltip-def__val"></div>
+      </div>
     </Layout>
   )
 }

@@ -1,5 +1,5 @@
 export { default as UiCheckbox } from './Checkbox'
 export { CopyText } from './CopyText'
+export { Loader as UiLoader } from './Loader'
 export { Modal as UiModal } from './Modal'
 export { Select as UiSelect } from './Select'
-export { SvgIcon } from './SvgIcon'

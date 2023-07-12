@@ -2,13 +2,13 @@ import { ModalHistory, ModalPostpone, OrderCard } from '@c/Dashboard'
 import { CheckmarkCheckboxSvg, SettingsSvg } from '@c/Ui/Icons'
 import cns from 'classnames'
 
-import { UiCheckbox, UiSelect } from '@/components/Ui'
+import { UiLoader, UiSelect } from '@/components/Ui'
 
 import { FilterType } from './Filter/FilterType'
 import { MobileFilter } from './Filter/MobileFilter'
 
 export const DashboardOrders: React.FC = () => {
-  const { orders, filter } = useAppSelector((store) => store.ordersState)
+  const { loading, orders, filter } = useAppSelector((store) => store.ordersState)
   const dispatch = useAppDispatch()
 
   return (
@@ -72,6 +72,7 @@ export const DashboardOrders: React.FC = () => {
             </div>
           ))}
         </div>
+        <UiLoader active={loading.order} theme="page" />
       </div>
 
       <ModalHistory />
