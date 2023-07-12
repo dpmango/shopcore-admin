@@ -1,4 +1,4 @@
-import { CaretSvg, InfoSvg, MoonSvg, SearchSvg } from '@c/Ui/Icons'
+import { CaretSvg, SearchSvg } from '@c/Ui/Icons'
 import { animated, useSpring } from '@react-spring/web'
 import cns from 'classnames'
 
@@ -70,24 +70,17 @@ export const Select: React.FC<ISelectProps> = ({
   }, [opened])
 
   return (
-    <div
-      className={cns(
-        'block-sidebar__select block-select',
-        disabled && 'select--disabled',
-        className,
-      )}
-      ref={wrapperRef}
-    >
+    <div className={cns('select-def', disabled && 'select--disabled', className)} ref={wrapperRef}>
       {/* <input className="block-select__inp" type="hidden" /> */}
       <div
-        className={cns('block-select__top', opened && '_active')}
+        className={cns('select-def__top', opened && '_active')}
         onClick={() => setOpened(!opened)}
       >
         <div className="block-select__text block-select__val">{currentTitle}</div>
         <CaretSvg />
       </div>
       <animated.ul
-        className={cns('block-select__dropdown', opened && '_active')}
+        className={cns('select-def__dropdown', opened && '_active')}
         style={{
           ...springs,
         }}
@@ -98,7 +91,7 @@ export const Select: React.FC<ISelectProps> = ({
               key={option.value}
               onClick={() => handleSelect(option)}
               className={cns(
-                'block-select__dropdown-el block-select__text',
+                'select-def__dropdown-el block-select__text',
                 option.disabled && '_disabled',
                 option.label === currentTitle && 'active',
                 option.modifier && `_${option.modifier}`,

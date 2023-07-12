@@ -1,5 +1,5 @@
 import type { IApiResponse } from '@/core/interface/Api'
-import type { IUser } from '@/core/interface/Chat'
+import type { IUser } from '@/core/interface/Auth'
 import type { IAuthDto, ITelegramAuthDto, IWhoisDto } from '@/core/interface/Initialization'
 
 // Auth (авторизация от ТГ)

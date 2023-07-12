@@ -1,3 +1,4 @@
+export { default as UiCheckbox } from './Checkbox'
 export { CopyText } from './CopyText'
 export { Modal } from './Modal'
 export { Select } from './Select'

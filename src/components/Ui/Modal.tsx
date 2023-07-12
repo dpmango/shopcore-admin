@@ -3,7 +3,7 @@ import cns from 'classnames'
 
 interface IModalProps {
   name: string
-  children: React.ReactElement[] | React.ReactElement
+  children: React.ReactElement[] | React.ReactElement | string
   handleClose: () => void
 }
 

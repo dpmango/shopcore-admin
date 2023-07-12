@@ -6,14 +6,8 @@ import Cookies from 'js-cookie'
 // import { getChatList, getDialogUser, getMessagesByDialog, markRead } from '@/core/api/chat.api'
 import { IUser } from '@/core/interface/Auth'
 
-export interface IInterface {
-  panelWidthResizer: number
-  mobileTab: null | 'chat' | 'info' | 'orders' | 'payments' | string
-}
-
-export interface IChat {
+export interface ISession {
   user: IUser | null
-  ui: IInterface
 }
 
 export const getUserService = createAsyncThunk('chat/me', async () => {
@@ -22,12 +16,8 @@ export const getUserService = createAsyncThunk('chat/me', async () => {
   return data
 })
 
-const initialState: IChat = {
+const initialState: ISession = {
   user: null,
-  ui: {
-    panelWidthResizer: 0,
-    mobileTab: 'chat',
-  },
 }
 
 export const chatState = createSlice({

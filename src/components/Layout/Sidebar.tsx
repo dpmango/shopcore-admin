@@ -6,10 +6,12 @@ import {
   ThemeDark,
   ThemeLight,
 } from '@c/Ui/Icons'
+import cns from 'classnames'
 
-export const DashboardSidebar: React.FC = () => {
-  const { user } = useAppSelector((state) => state.chatState)
+export const LayoutSidebar: React.FC = () => {
+  const { user } = useAppSelector((state) => state.sesionState)
   const dispatch = useAppDispatch()
+  const { pathname } = useLocation()
 
   const toggleTheme = useCallback(() => {
     const $html = document.querySelector('html')
@@ -23,12 +25,7 @@ export const DashboardSidebar: React.FC = () => {
     // TODO + plus charts charts js colors
   }, [])
 
-  const timer: { current: NodeJS.Timeout | null } = useRef(null)
   useEffect(() => {
-    const initialRequests = async () => {
-      await dispatch(getUserService())
-    }
-
     const $html = document.querySelector('html')
     if (localStorageGet('theme') === 'dark') {
       $html?.classList.remove('light')
@@ -36,19 +33,16 @@ export const DashboardSidebar: React.FC = () => {
       $html?.classList.add('light')
     }
 
-    initialRequests()
-
-    // timer.current = setInterval(
-    //   () => {
-    //     dispatch(getChatListService())
-    //   },
-    //   1 * 60 * 1000 * import.meta.env.VITE_APP_TRASEHOLD,
-    // )
-
-    // return () => {
-    //   clearInterval(timer.current as NodeJS.Timeout)
-    // }
+    dispatch(getUserService())
   }, [])
+
+  // $('.sidebar .links-def__link').on('click', function () {
+  //   if ($(window).width() <= 768) {
+  //     $('#modal-menu').fadeIn(300)
+  //     _this.setNoscroll()
+  //     return false
+  //   }
+  // })
 
   return (
     <div className="lk-content__sidebar sidebar">
@@ -58,22 +52,22 @@ export const DashboardSidebar: React.FC = () => {
         </div>
         <div className="sidebar__middle">
           <ul className="links-def">
-            <li className="links-def__el active">
+            <li className={cns('links-def__el', pathname === '/' && 'active')}>
               <NavLink className="links-def__link" to="/">
                 <OrdersSvg />
               </NavLink>
             </li>
-            <li className="links-def__el">
+            <li className={cns('links-def__el', pathname === '/cancellations' && 'active')}>
               <NavLink className="links-def__link" to="/cancellations">
                 <CancelationsSvg />
               </NavLink>
             </li>
-            <li className="links-def__el">
+            <li className={cns('links-def__el', pathname === '/notifications' && 'active')}>
               <NavLink className="links-def__link" to="/notifications">
                 <NotificationSvg />
               </NavLink>
             </li>
-            <li className="links-def__el">
+            <li className={cns('links-def__el', pathname === '/stats' && 'active')}>
               <NavLink className="links-def__link" to="/stats">
                 <StatsSvg />
               </NavLink>

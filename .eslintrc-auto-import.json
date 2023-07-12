@@ -85,6 +85,23 @@
     "setSimulator": true,
     "setStateCoin": true,
     "setStateDataForce": true,
-    "setStateTime": true
+    "setStateTime": true,
+    "fetchOrdersApi": true,
+    "getOrders": true,
+    "ordersStore": true,
+    "sessionStore": true,
+    "Type": true,
+    "getOrdersService": true,
+    "dateToTimestamp": true,
+    "formatMinutes": true,
+    "generateDaysFrom": true,
+    "generateTimeSlots": true,
+    "minutesToTimestamp": true,
+    "pad": true,
+    "secondsToStamp": true,
+    "timestampToMinutes": true,
+    "Plurize": true,
+    "formatPrice": true,
+    "dateAgo": true
   }
 }
