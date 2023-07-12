@@ -3,6 +3,7 @@ import { UiCheckbox, UiSelect } from '@c/Ui'
 import { BackArrowSvg, CheckmarkCheckboxSvg, SettingsSvg } from '@c/Ui/Icons'
 import cns from 'classnames'
 
+import { ChartRenderer } from './Chart/ChartRenderer'
 import { MobileFilterOperator } from './Filter/MobileFilterOperator'
 
 export const DashboardStatOperator: React.FC = () => {
@@ -83,7 +84,7 @@ export const DashboardStatOperator: React.FC = () => {
             <div className="sec-chart__content">
               <div className="sec-chart__left">
                 <div className="block-chart">
-                  <canvas className="block-chart__chart" id="myChart"></canvas>
+                  <ChartRenderer />
                 </div>
               </div>
               <div className="sec-chart__right">

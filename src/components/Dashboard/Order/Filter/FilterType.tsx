@@ -6,8 +6,16 @@ interface IFilterTypeProps {
 }
 
 export const FilterType: React.FC<IFilterTypeProps> = ({ name, baseName }) => {
-  const { orders, filter } = useAppSelector((store) => store.ordersState)
+  const { filter } = useAppSelector((store) => store.ordersState)
   const dispatch = useAppDispatch()
+
+  const changeFilter = useCallback(
+    (type: 'afk' | 'work' | 'problem') => {
+      dispatch(setFilter({ type: filter.type === type ? null : type }))
+      dispatch(getOrdersService())
+    },
+    [filter.type],
+  )
 
   return (
     <>
@@ -15,7 +23,7 @@ export const FilterType: React.FC<IFilterTypeProps> = ({ name, baseName }) => {
         className={name}
         baseName={baseName}
         isChecked={filter.type === 'afk'}
-        onChange={() => dispatch(setFilter({ type: 'afk' }))}
+        onChange={() => changeFilter('afk')}
       >
         AFK
       </UiCheckbox>
@@ -23,7 +31,7 @@ export const FilterType: React.FC<IFilterTypeProps> = ({ name, baseName }) => {
         className={name}
         baseName={baseName}
         isChecked={filter.type === 'work'}
-        onChange={() => dispatch(setFilter({ type: 'work' }))}
+        onChange={() => changeFilter('work')}
       >
         В работе
       </UiCheckbox>
@@ -31,7 +39,7 @@ export const FilterType: React.FC<IFilterTypeProps> = ({ name, baseName }) => {
         className={name}
         baseName={baseName}
         isChecked={filter.type === 'problem'}
-        onChange={() => dispatch(setFilter({ type: 'problem' }))}
+        onChange={() => changeFilter('problem')}
       >
         Проблемные
       </UiCheckbox>

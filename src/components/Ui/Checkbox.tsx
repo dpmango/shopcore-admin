@@ -35,16 +35,14 @@ const UiCheckbox: React.FC<ICheckboxProps> = ({
   )
 
   return (
-    <label
-      className={cns(baseName, variant && `_${variant}`, className, error && 'error')}
-      onClick={handleChange}
-    >
+    <label className={cns(baseName, variant && `_${variant}`, className, error && 'error')}>
       <span className={cns(`${baseName}__btn`, 'checkbox-def')}>
         <input
           className="checkbox-def__inp"
           type="checkbox"
           name="inp-status"
           checked={isChecked}
+          onChange={handleChange}
           {...props}
         />
         <span className="checkbox-def__content">
