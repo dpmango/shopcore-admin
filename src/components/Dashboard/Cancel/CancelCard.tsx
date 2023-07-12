@@ -5,6 +5,8 @@ import { IOrderDto } from '@/core/interface/Orders'
 interface IOrderCardProps extends IOrderDto {}
 
 export const CancelCard: React.FC<IOrderCardProps> = ({ id, where, item, cooldown, created }) => {
+  const dispatch = useAppDispatch()
+
   return (
     <div className="content-el cancel-el">
       <div className="cancel-el__content">
@@ -50,7 +52,10 @@ export const CancelCard: React.FC<IOrderCardProps> = ({ id, where, item, cooldow
               <WarningWhiteSvg />
               <span className="btn-def__text">9</span>
             </div>
-            <div className="content-btns__btn btn-count btn-modal" data-modal="#modal-history">
+            <div
+              className="content-btns__btn btn-count btn-modal"
+              onClick={() => dispatch(setModal('modal-history'))}
+            >
               <div className="btn-count__left">История</div>
               <div className="btn-count__right">27</div>
             </div>
@@ -65,11 +70,17 @@ export const CancelCard: React.FC<IOrderCardProps> = ({ id, where, item, cooldow
           </div>
         </div>
         <div className="cancel-el__block cancel-el__block_4">
-          <button className="cancel-el__btnmob btn-count btn-modal" data-modal="#modal-history">
+          <button
+            className="cancel-el__btnmob btn-count btn-modal"
+            onClick={() => dispatch(setModal('modal-history'))}
+          >
             <div className="btn-count__left">История</div>
             <div className="btn-count__right">27</div>
           </button>
-          <button className="btn-def cancel-el__btn btn-modal" data-modal="#modal-confirm">
+          <button
+            className="btn-def cancel-el__btn btn-modal"
+            onClick={() => dispatch(setModal('modal-confirm'))}
+          >
             <span className="btn-def__text">Подтвердить</span>
           </button>
         </div>

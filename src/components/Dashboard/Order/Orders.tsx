@@ -1,15 +1,11 @@
-import {
-  ModalAccess,
-  ModalCancel,
-  ModalHistory,
-  ModalOrderSettings,
-  ModalPostpone,
-  OrderCard,
-} from '@c/Dashboard'
+import { ModalHistory, ModalPostpone, OrderCard } from '@c/Dashboard'
 import { CheckmarkCheckboxSvg, SettingsSvg } from '@c/Ui/Icons'
 import cns from 'classnames'
 
 import { UiCheckbox, UiSelect } from '@/components/Ui'
+
+import { FilterType } from './Filter/FilterType'
+import { MobileFilter } from './Filter/MobileFilter'
 
 export const DashboardOrders: React.FC = () => {
   const { orders, filter } = useAppSelector((store) => store.ordersState)
@@ -21,31 +17,14 @@ export const DashboardOrders: React.FC = () => {
         <div className="lk-top-info">
           <div className="lk-content__title title-def lk-top-info__el">
             Заказы<span className="count-text title-def__count">{orders.length}</span>
-            <div className="lk-top-info__btn btn-modal" data-modal="#modal-settings">
+            <div
+              className="lk-top-info__btn btn-modal"
+              onClick={() => dispatch(setModal('modal-settings'))}
+            >
               <SettingsSvg />
             </div>
           </div>
-          <UiCheckbox
-            className="lk-top-info__el"
-            isChecked={filter.type === 'afk'}
-            onChange={() => dispatch(setFilter({ type: 'afk' }))}
-          >
-            AFK
-          </UiCheckbox>
-          <UiCheckbox
-            className="lk-top-info__el"
-            isChecked={filter.type === 'work'}
-            onChange={() => dispatch(setFilter({ type: 'work' }))}
-          >
-            В работе
-          </UiCheckbox>
-          <UiCheckbox
-            className="lk-top-info__el"
-            isChecked={filter.type === 'problem'}
-            onChange={() => dispatch(setFilter({ type: 'problem' }))}
-          >
-            Проблемные
-          </UiCheckbox>
+          <FilterType name="lk-top-info__el" />
         </div>
         <div className="lk-top-acts">
           <div className="lk-top-acts__content">
@@ -95,11 +74,9 @@ export const DashboardOrders: React.FC = () => {
         </div>
       </div>
 
-      <ModalAccess />
-      <ModalCancel />
       <ModalHistory />
       <ModalPostpone />
-      <ModalOrderSettings />
+      <MobileFilter />
     </>
   )
 }

@@ -6,8 +6,10 @@ import { memo, useCallback, useMemo } from 'react'
 interface ICheckboxProps {
   variant?: 'default'
   className?: string
+  baseName?: string
   isChecked: boolean
   error?: string | boolean
+  counter?: number | string
   onChange: () => void
   children: any
 }
@@ -15,8 +17,10 @@ interface ICheckboxProps {
 const UiCheckbox: React.FC<ICheckboxProps> = ({
   className,
   isChecked,
+  baseName = 'checkbox-el',
   variant = 'default',
   error,
+  counter,
   onChange,
   children,
   ...props
@@ -32,10 +36,10 @@ const UiCheckbox: React.FC<ICheckboxProps> = ({
 
   return (
     <label
-      className={cns('checkbox-el', variant && `_${variant}`, className, error && 'error')}
+      className={cns(baseName, variant && `_${variant}`, className, error && 'error')}
       onClick={handleChange}
     >
-      <span className="checkbox-el__btn checkbox-def">
+      <span className={cns(`${baseName}__btn`, 'checkbox-def')}>
         <input
           className="checkbox-def__inp"
           type="checkbox"
@@ -47,7 +51,8 @@ const UiCheckbox: React.FC<ICheckboxProps> = ({
           <CheckmarkCheckboxSvg />
         </span>
       </span>
-      <span className="checkbox-el__text">{children}</span>
+      <span className={cns(`${baseName}__text`)}>{children}</span>
+      {counter && <span className={cns(`${baseName}__text`)}>{counter}</span>}
     </label>
   )
 }

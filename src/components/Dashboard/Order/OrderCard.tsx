@@ -5,6 +5,8 @@ import { IOrderDto } from '@/core/interface/Orders'
 interface IOrderCardProps extends IOrderDto {}
 
 export const OrderCard: React.FC<IOrderCardProps> = ({ id, where, item, cooldown, created }) => {
+  const dispatch = useAppDispatch()
+
   return (
     <div className="order-el content-el">
       <div className="order-el__content">
@@ -47,7 +49,10 @@ export const OrderCard: React.FC<IOrderCardProps> = ({ id, where, item, cooldown
               <WarningSvg className="btn-def__icon" />
               <span className="btn-def__text">0</span>
             </div>
-            <div className="content-btns__btn btn-count btn-modal" data-modal="#modal-history">
+            <div
+              className="content-btns__btn btn-count btn-modal"
+              onClick={() => dispatch(setModal('modal-history'))}
+            >
               <div className="btn-count__left">История</div>
               <div className="btn-count__right">0</div>
             </div>
@@ -66,11 +71,14 @@ export const OrderCard: React.FC<IOrderCardProps> = ({ id, where, item, cooldown
           </div>
         </div>
         <div className="order-el__block order-el__block_6">
-          <div className="btn-count btn-modal" data-modal="#modal-postpone">
+          <div className="btn-count btn-modal" onClick={() => dispatch(setModal('modal-postpone'))}>
             <div className="btn-count__left">Отложить</div>
             <div className="btn-count__right">0</div>
           </div>
-          <div className="order-el__btnmob btn-count btn-modal" data-modal="#modal-history">
+          <div
+            className="order-el__btnmob btn-count btn-modal"
+            onClick={() => dispatch(setModal('modal-history'))}
+          >
             <div className="btn-count__left">История</div>
             <div className="btn-count__right">0</div>
           </div>

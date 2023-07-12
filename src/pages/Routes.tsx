@@ -5,7 +5,7 @@ import { AuthPage } from '@/pages/Auth.page'
 import { CancellationsPage } from '@/pages/Cancellations.page'
 import { NotificationsPage } from '@/pages/Notifications.page'
 import { OrdersPage } from '@/pages/Orders.page'
-import { StatsPage } from '@/pages/Stats.page'
+import { StatsPage, StatsPageOperator } from '@/pages/Stats.page'
 
 declare global {
   interface Window {
@@ -36,6 +36,7 @@ const Router = () => {
         <Route path="/cancellations" element={<CancellationsPage />} />
         <Route path="/notifications" element={<NotificationsPage />} />
         <Route path="/stats" element={<StatsPage />} />
+        <Route path="/stats/:id" element={<StatsPageOperator />} />
       </Route>
 
       <Route path="*" element={<Navigate to="/auth" replace={true} />} />

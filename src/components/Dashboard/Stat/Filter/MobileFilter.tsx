@@ -1,6 +1,6 @@
 import { UiModal, UiSelect } from '@/components/Ui'
 
-export const ModalSettings: React.FC = () => {
+export const MobileFilter: React.FC = () => {
   return (
     <UiModal name="modal-stat" modifier="mob">
       <div className="modal-mob__top">

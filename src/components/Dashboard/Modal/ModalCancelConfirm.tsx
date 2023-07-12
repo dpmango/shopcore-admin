@@ -1,6 +1,6 @@
 import { UiModal } from '@/components/Ui'
 
-export const ModalCancel: React.FC = () => {
+export const ModalCancelConfirm: React.FC = () => {
   return (
     <UiModal name="modal-confirm" modifier="confirm">
       <div className="modal-content__top">

@@ -48,17 +48,17 @@ export const LayoutSidebar: React.FC = () => {
               </li>
             )}
 
-            <li className={cns('links-def__el', pathname === '/cancellations' && 'active')}>
+            <li className={cns('links-def__el', pathname.includes('/cancellations') && 'active')}>
               <NavLink className="links-def__link" to="/cancellations">
                 <CancelationsSvg />
               </NavLink>
             </li>
-            <li className={cns('links-def__el', pathname === '/notifications' && 'active')}>
+            <li className={cns('links-def__el', pathname.includes('/notifications') && 'active')}>
               <NavLink className="links-def__link" to="/notifications">
                 <NotificationSvg />
               </NavLink>
             </li>
-            <li className={cns('links-def__el', pathname === '/stats' && 'active')}>
+            <li className={cns('links-def__el', pathname.includes('/stats') && 'active')}>
               <NavLink className="links-def__link" to="/stats">
                 <StatsSvg />
               </NavLink>
