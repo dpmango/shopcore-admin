@@ -19,11 +19,11 @@ export const DashboardCancellations: React.FC = () => {
           </div>
         </div>
         <div className="block-content">
-          {/* {orders.map((x, idx) => (
+          {orders.map((x, idx) => (
             <div className="block-content__el" key={idx}>
               <CancelCard {...x} />
             </div>
-          ))} */}
+          ))}
         </div>
       </div>
 

@@ -14,12 +14,12 @@ dayjs.extend(timezone)
 dayjs.extend(isToday)
 dayjs.locale('ru')
 
-export const dateToTimestamp = (v: Date | string) => {
-  return dayjs(v).format('DD MMMM YYYY в HH:mm')
+export const dateToTimestamp = (v: number) => {
+  return dayjs.unix(v).format('DD MMMM YYYY в HH:mm')
 }
 
-export const dateAgo = (v: Date | string) => {
-  return dayjs(v).fromNow(true)
+export const dateAgo = (v: number) => {
+  return dayjs.unix(v).fromNow(true)
 }
 
 export const formatMinutes = (v: string) => {

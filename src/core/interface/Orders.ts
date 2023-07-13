@@ -1,8 +1,9 @@
 export interface IOrderDto {
   id: string
-  created: Date
-  cooldown: Date
+  created: number
+  cooldown: number
   historyCount: number
+  problemCount: number
   item: IOrderItem
   where: IOrderWhere
 }
@@ -14,5 +15,5 @@ export interface IOrderItem {
 
 export interface IOrderWhere {
   name: string
-  time: Date
+  time: number
 }

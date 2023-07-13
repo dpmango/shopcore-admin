@@ -4,7 +4,15 @@ import { IOrderDto } from '@/core/interface/Orders'
 
 interface IOrderCardProps extends IOrderDto {}
 
-export const OrderCard: React.FC<IOrderCardProps> = ({ id, where, item, cooldown, created }) => {
+export const OrderCard: React.FC<IOrderCardProps> = ({
+  id,
+  where,
+  item,
+  cooldown,
+  created,
+  historyCount,
+  problemCount,
+}) => {
   const dispatch = useAppDispatch()
 
   return (
@@ -43,18 +51,18 @@ export const OrderCard: React.FC<IOrderCardProps> = ({ id, where, item, cooldown
           <div className="content-btns">
             <div className="content-btns__btn btn-def">
               <PointerSvg />
-              <span className="btn-def__text">0</span>
+              <span className="btn-def__text">{historyCount}</span>
             </div>
             <div className="content-btns__btn btn-def btn-def_red">
               <WarningSvg className="btn-def__icon" />
-              <span className="btn-def__text">0</span>
+              <span className="btn-def__text">{problemCount}</span>
             </div>
             <div
               className="content-btns__btn btn-count btn-modal"
               onClick={() => dispatch(setModal({ name: 'modal-history' }))}
             >
               <div className="btn-count__left">История</div>
-              <div className="btn-count__right">0</div>
+              <div className="btn-count__right">{historyCount}</div>
             </div>
           </div>
         </div>
@@ -85,7 +93,7 @@ export const OrderCard: React.FC<IOrderCardProps> = ({ id, where, item, cooldown
             onClick={() => dispatch(setModal({ name: 'modal-history' }))}
           >
             <div className="btn-count__left">История</div>
-            <div className="btn-count__right">0</div>
+            <div className="btn-count__right">{historyCount}</div>
           </div>
         </div>
       </div>
