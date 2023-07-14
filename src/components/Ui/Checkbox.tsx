@@ -1,5 +1,4 @@
 import { CheckmarkCheckboxSvg } from '@c/Ui/Icons'
-import cns from 'classnames'
 import PropTypes from 'prop-types'
 import { memo, useCallback, useMemo } from 'react'
 

@@ -1,5 +1,5 @@
 /* eslint-disable no-irregular-whitespace */
-import cns from 'classnames'
+
 import { TLoginButton, TLoginButtonSize } from 'react-telegram-auth'
 
 import { ITelegramAuthDto } from '@/core/interface/Initialization'

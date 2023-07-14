@@ -7,7 +7,6 @@ import {
   ThemeLight,
 } from '@c/Ui/Icons'
 import { useWindowSize } from '@uidotdev/usehooks'
-import cns from 'classnames'
 
 export const LayoutSidebar: React.FC = () => {
   const { user } = useAppSelector((state) => state.sesionState)

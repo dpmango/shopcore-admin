@@ -16,7 +16,7 @@ export const fetchAuth = async ({ telegram, ...rest }: IAuthPayload) => {
     },
   })) as IApiResponse<IAuthDto>
 
-  return { data, error: !!data }
+  return { data, error: !data }
 }
 
 export const getUser = async () => {
@@ -24,5 +24,5 @@ export const getUser = async () => {
     method: 'GET',
   })) as IApiResponse<IUser>
 
-  return { data, error: !!data }
+  return { data, error: !data }
 }

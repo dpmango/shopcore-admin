@@ -58,8 +58,13 @@ export const OrderCard: React.FC<IOrderCardProps> = ({
               <span className="btn-def__text">{problemCount}</span>
             </div>
             <div
-              className="content-btns__btn btn-count btn-modal"
-              onClick={() => dispatch(setModal({ name: 'modal-history' }))}
+              className={cns(
+                'content-btns__btn btn-count btn-modal',
+                historyCount < 1 && '_disabled',
+              )}
+              onClick={() =>
+                historyCount > 0 && dispatch(setModal({ name: 'history', params: { id, created } }))
+              }
             >
               <div className="btn-count__left">История</div>
               <div className="btn-count__right">{historyCount}</div>
@@ -81,16 +86,14 @@ export const OrderCard: React.FC<IOrderCardProps> = ({
         <div className="order-el__block order-el__block_6">
           <div
             className="btn-count btn-modal"
-            onClick={() =>
-              dispatch(setModal({ name: 'modal-postpone', params: { id: id, created } }))
-            }
+            onClick={() => dispatch(setModal({ name: 'modal-postpone', params: { id, created } }))}
           >
             <div className="btn-count__left">Отложить</div>
             <div className="btn-count__right">0</div>
           </div>
           <div
             className="order-el__btnmob btn-count btn-modal"
-            onClick={() => dispatch(setModal({ name: 'modal-history' }))}
+            onClick={() => dispatch(setModal({ name: 'history', params: { id, created } }))}
           >
             <div className="btn-count__left">История</div>
             <div className="btn-count__right">{historyCount}</div>

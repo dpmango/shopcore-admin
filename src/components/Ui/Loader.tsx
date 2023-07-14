@@ -1,11 +1,14 @@
-import cns from 'classnames'
-
 interface ILoaderProps {
-  theme: 'inline' | 'page'
+  theme?: 'inline' | 'page'
   active: boolean
+  throttleMs?: number
 }
 
-export const Loader: React.FC<ILoaderProps> = ({ active = true, theme = 'inline' }) => {
+export const Loader: React.FC<ILoaderProps> = ({
+  active = true,
+  theme = 'inline',
+  throttleMs = 600,
+}) => {
   const [showLoader, setShowLoader] = useState(false)
 
   const timer: { current: NodeJS.Timeout | null } = useRef(null)
@@ -13,7 +16,7 @@ export const Loader: React.FC<ILoaderProps> = ({ active = true, theme = 'inline'
     if (active) {
       timer.current = setTimeout(() => {
         setShowLoader(true)
-      }, 600)
+      }, throttleMs)
     } else {
       setShowLoader(false)
       clearTimeout(timer.current as NodeJS.Timeout)

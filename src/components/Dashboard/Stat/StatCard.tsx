@@ -1,5 +1,4 @@
 import { SettingsSvg, StatsMobileSvg } from '@c/Ui/Icons'
-import cns from 'classnames'
 
 export const StatCard: React.FC = () => {
   const dispatch = useAppDispatch()

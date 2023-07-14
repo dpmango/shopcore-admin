@@ -1,6 +1,5 @@
 import { CaretSvg, SearchSvg } from '@c/Ui/Icons'
 import { animated, useSpring } from '@react-spring/web'
-import cns from 'classnames'
 
 // import './select.sass';
 

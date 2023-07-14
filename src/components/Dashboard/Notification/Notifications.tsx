@@ -1,5 +1,4 @@
 import { WarningSvg } from '@c/Ui/Icons'
-import cns from 'classnames'
 
 export const DashboardNotifications: React.FC = () => {
   return (

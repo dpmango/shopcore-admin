@@ -17,3 +17,10 @@ export interface IOrderWhere {
   name: string
   time: number
 }
+
+export interface IOrderHistroyDto {
+  date: number
+  info: string
+  reason: string
+  waiting: number
+}

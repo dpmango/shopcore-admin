@@ -90,6 +90,17 @@
     max-height: 100vh;
   }
 
+  &.inline {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    margin: 32px 0;
+
+    &._active {
+      display: flex;
+    }
+  }
+
   &.page {
     position: absolute;
     display: flex;

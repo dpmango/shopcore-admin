@@ -1,6 +1,5 @@
 import type { IApiResponse } from '@/core/interface/Api'
-import type { IAuthDto, ITelegramAuthDto, IWhoisDto } from '@/core/interface/Initialization'
-import type { IOrderDto } from '@/core/interface/Orders'
+import type { IOrderDto, IOrderHistroyDto } from '@/core/interface/Orders'
 
 // Auth (авторизация от ТГ)
 export interface IFetchOrdersPayload {
@@ -15,20 +14,32 @@ export const fetchOrdersApi = async ({ type }: IFetchOrdersPayload) => {
     },
   })) as IApiResponse<IOrderDto[]>
 
-  return { data, error: !!data }
+  return { data, error: !data }
 }
 
-export interface IORderPostpronePayload {
+export const orderHistoryApi = async (id: string) => {
+  const { data, error } = (await api(`order/history`, {
+    method: 'GET',
+    params: { id: id },
+  })) as IApiResponse<IOrderHistroyDto[]>
+
+  return {
+    data: data?.length && data.sort((a, b) => (a.date < b.date ? 1 : -1)),
+    error: !data,
+  }
+}
+
+export interface IOrderPostpronePayload {
   id: string
   reason: string
   minutes: number
 }
 
-export const orderPostproneApi = async (payload: IORderPostpronePayload) => {
+export const orderPostproneApi = async (payload: IOrderPostpronePayload) => {
   const { data, error } = (await api(`order/postprone`, {
     method: 'POST',
     body: payload,
-  })) as IApiResponse<IOrderDto[]>
+  })) as IApiResponse<any>
 
-  return { data, error: !!data }
+  return { data, error: !data }
 }

@@ -1,6 +1,5 @@
 import { ModalAccess, StatCard } from '@c/Dashboard'
 import { SettingsSvg, TableCaretSvg } from '@c/Ui/Icons'
-import cns from 'classnames'
 
 import { MobileFilter } from './Filter/MobileFilter'
 

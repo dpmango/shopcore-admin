@@ -1,7 +1,6 @@
 import { FilterCore } from '@c/Dashboard/Stat/Filter/FilterCore'
 import { UiCheckbox, UiSelect } from '@c/Ui'
 import { BackArrowSvg, CheckmarkCheckboxSvg, SettingsSvg } from '@c/Ui/Icons'
-import cns from 'classnames'
 
 import { ChartRenderer } from './Chart/ChartRenderer'
 import { MobileFilterOperator } from './Filter/MobileFilterOperator'

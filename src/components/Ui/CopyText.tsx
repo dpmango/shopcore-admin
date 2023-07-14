@@ -1,5 +1,4 @@
 import { CopySvg } from '@c/Ui/Icons'
-import cns from 'classnames'
 import { toast } from 'react-toastify'
 
 interface ICopyText {

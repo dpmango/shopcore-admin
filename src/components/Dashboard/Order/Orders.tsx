@@ -1,6 +1,5 @@
 import { ModalHistory, ModalPostpone, OrderCard } from '@c/Dashboard'
 import { CheckmarkCheckboxSvg, SettingsSvg } from '@c/Ui/Icons'
-import cns from 'classnames'
 
 import { UiLoader, UiSelect } from '@/components/Ui'
 

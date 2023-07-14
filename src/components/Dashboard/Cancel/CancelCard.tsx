@@ -54,7 +54,7 @@ export const CancelCard: React.FC<IOrderCardProps> = ({ id, where, item, cooldow
             </div>
             <div
               className="content-btns__btn btn-count btn-modal"
-              onClick={() => dispatch(setModal({ name: 'modal-history' }))}
+              onClick={() => dispatch(setModal({ name: 'history', params: { id, created } }))}
             >
               <div className="btn-count__left">История</div>
               <div className="btn-count__right">27</div>
@@ -72,7 +72,7 @@ export const CancelCard: React.FC<IOrderCardProps> = ({ id, where, item, cooldow
         <div className="cancel-el__block cancel-el__block_4">
           <button
             className="cancel-el__btnmob btn-count btn-modal"
-            onClick={() => dispatch(setModal({ name: 'modal-history' }))}
+            onClick={() => dispatch(setModal({ name: 'history', params: { id, created } }))}
           >
             <div className="btn-count__left">История</div>
             <div className="btn-count__right">27</div>

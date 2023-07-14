@@ -22,7 +22,16 @@ export default ({ mode }) => {
         include: [
           /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
         ],
-        imports: ['react', 'react-router-dom'],
+        imports: [
+          'react',
+          'react-router-dom',
+          {
+            classnames: [
+              // default imports
+              ['default', 'cns'], // import { default as axios } from 'axios',
+            ],
+          },
+        ],
         dirs: [
           './src/core/**', // all nested modules
         ],

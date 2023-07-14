@@ -22,12 +22,14 @@ export const dateAgo = (v: number) => {
   return dayjs.unix(v).fromNow(true)
 }
 
-export const formatMinutes = (v: string) => {
-  const min = +v
+export const secondsToStamp = (v: number) => {
+  const min = Math.round(v / 60)
 
+  const days = Math.floor(min / 60 / 24)
   const hours = Math.floor(min / 60)
+  const dd = days ? `${days} ${Plurize(days, 'день', 'дня', 'дней')} ` : ''
   const hh = hours ? `${hours} ${Plurize(hours, 'час', 'часа', 'часов')} ` : ''
-  const mm = `${min - hours * 60} минут`
+  const mm = !dd && `${min - hours * 60} мин`
 
-  return `${hh}${mm}`
+  return `${dd}${hh}${mm}`
 }

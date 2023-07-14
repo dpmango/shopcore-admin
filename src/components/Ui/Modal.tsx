@@ -1,6 +1,6 @@
 // import './modal.sass';
 import { CloseSvg } from '@c/Ui/Icons'
-import cns from 'classnames'
+
 interface IModalProps {
   name: string
   children: React.ReactElement[] | React.ReactElement | string

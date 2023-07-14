@@ -93,12 +93,11 @@
     "Type": true,
     "getOrdersService": true,
     "dateToTimestamp": true,
-    "formatMinutes": true,
+    "secondsToStamp": true,
     "generateDaysFrom": true,
     "generateTimeSlots": true,
     "minutesToTimestamp": true,
     "pad": true,
-    "secondsToStamp": true,
     "timestampToMinutes": true,
     "Plurize": true,
     "formatPrice": true,
@@ -107,6 +106,8 @@
     "setModal": true,
     "setTheme": true,
     "useTheme": true,
-    "orderPostproneApi": true
+    "orderPostproneApi": true,
+    "orderHistoryApi": true,
+    "cns": true
   }
 }

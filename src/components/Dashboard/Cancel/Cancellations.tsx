@@ -1,5 +1,4 @@
 import { ModalCancelConfirm, ModalHistory } from '@c/Dashboard'
-import cns from 'classnames'
 
 import { CancelCard } from './CancelCard'
 

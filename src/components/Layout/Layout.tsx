@@ -1,5 +1,4 @@
 import { LayoutSidebar, ModalMenu } from '@c/Layout'
-import cns from 'classnames'
 
 interface ILayout {
   children: React.ReactElement[] | React.ReactElement
