@@ -23,7 +23,7 @@
       "@ui/*": ["./src/components/Ui/*"],
       "@interface/*": ["./src/core/interface/*"]
     },
-    "types": ["vite-plugin-svg-icons/client", "node"]
+    "types": ["node"]
   },
   "include": ["src/vite-env.d.tsd.ts", "auto-imports.d.ts", "src"],
   "references": [{ "path": "./tsconfig.config.json" }]

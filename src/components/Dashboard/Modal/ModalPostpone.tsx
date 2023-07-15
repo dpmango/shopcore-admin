@@ -1,5 +1,7 @@
 import { UiModal, UiSelect } from '@/components/Ui'
 
+import { ModalHead } from './Partials/ModalHead'
+
 export const ModalPostpone: React.FC = () => {
   const { modalParams } = useAppSelector((store) => store.sesionState)
 
@@ -11,14 +13,9 @@ export const ModalPostpone: React.FC = () => {
   }
 
   return (
-    <UiModal name="modal-postpone" modifier="postpone">
-      <div className="modal-content__top">
-        <div className="title-def modal-content__title">Отложить заказ</div>
-        <div className="content-info-2">
-          <span className="content-info-2__title">{modalParams.id}</span>
-          <span className="content-info-2__text">{dateToTimestamp(modalParams.created)}</span>
-        </div>
-      </div>
+    <UiModal name="postpone" modifier="postpone">
+      <ModalHead title="Отложить заказ" id={modalParams.id} created={modalParams.create} />
+
       <div className="block-info modal-content__block">
         <div className="block-info__title">На сколько откладываем</div>
 

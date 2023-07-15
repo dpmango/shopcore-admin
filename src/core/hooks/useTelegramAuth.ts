@@ -15,9 +15,8 @@ export const useTelegramAuth = () => {
       Cookies.set('auth-ticketv2', token)
       navigate('/')
 
-      const { payload } = await dispatch(getChatListService())
-
-      if (!payload) throw new Error()
+      // const { payload } = await dispatch(getChatListService())
+      // if (!payload) throw new Error()
     } catch (err) {
       toast.error('Что то пошло не так. Обратитьс к администратору')
     }

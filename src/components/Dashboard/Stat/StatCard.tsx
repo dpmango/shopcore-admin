@@ -1,23 +1,20 @@
+import { ContentName, ContentUser, HistoryBtn } from '@c/Dashboard/Atom'
 import { SettingsSvg, StatsMobileSvg } from '@c/Ui/Icons'
 
-export const StatCard: React.FC = () => {
+import { IStatDto } from '@/core/interface/Stat'
+
+interface IStatCardProps extends IStatDto {}
+
+export const StatCard: React.FC<IStatCardProps> = ({ operator }) => {
   const dispatch = useAppDispatch()
 
   return (
     <div className={cns('content-el stat-el', false && 'stat-el_green')}>
       <div className="stat-el__content">
         <div className="stat-el__block stat-el__block_1">
-          <div className="content-user">
-            <img
-              className="content-user__img"
-              src="https://randomuser.me/api/portraits/men/74.jpg"
-              alt=""
-            />
-            <div className="content-user__body">
-              <div className="content-user__title">Жора</div>
-              <div className="content-user__text">3302468557</div>
-            </div>
-          </div>
+          {operator && (
+            <ContentUser avatar={operator.avatar} title={operator.name} description={operator.id} />
+          )}
         </div>
         <div className="stat-el__block stat-el__block_2">
           <div className="info-stat stat-el__el stat-el__el_1">

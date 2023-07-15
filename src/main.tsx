@@ -1,5 +1,4 @@
 import '@/assets/styles/app.scss'
-import 'virtual:svg-icons-register'
 
 import { createRoot } from 'react-dom/client'
 import { Provider } from 'react-redux'

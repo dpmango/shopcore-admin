@@ -3,6 +3,8 @@ import { toast } from 'react-toastify'
 import { UiLoader, UiModal } from '@/components/Ui'
 import { IOrderHistroyDto } from '@/core/interface/Orders'
 
+import { ModalHead } from './Partials/ModalHead'
+
 export const ModalHistory: React.FC = () => {
   const [historyList, setHistroyList] = useState<IOrderHistroyDto[]>([])
   const [loading, setLoading] = useState(true)
@@ -28,13 +30,8 @@ export const ModalHistory: React.FC = () => {
 
   return (
     <UiModal name="history" modifier="history">
-      <div className="modal-content__top">
-        <div className="title-def modal-content__title">История заказа</div>
-        <div className="content-info-2">
-          <span className="content-info-2__title">{modalParams.id}</span>
-          <span className="content-info-2__text">{dateToTimestamp(modalParams.created)}</span>
-        </div>
-      </div>
+      <ModalHead title="История заказа" id={modalParams.id} created={modalParams.create} />
+
       <div className="modal-content__block">
         <UiLoader theme="inline" active={loading} throttleMs={50} />
 

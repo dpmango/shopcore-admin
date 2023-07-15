@@ -6,7 +6,6 @@ import AutoImport from 'unplugin-auto-import/vite'
 import { defineConfig, loadEnv } from 'vite'
 import eslintPlugin from 'vite-plugin-eslint'
 import mkcert from 'vite-plugin-mkcert'
-import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 
 // https://vitejs.dev/config/
 
@@ -44,10 +43,6 @@ export default ({ mode }) => {
       eslintPlugin({
         failOnError: false,
         cache: false,
-      }),
-      createSvgIconsPlugin({
-        iconDirs: [path.resolve(process.cwd(), 'src/assets/icons')],
-        symbolId: 'icon-[dir]-[name]',
       }),
     ],
     resolve: {
