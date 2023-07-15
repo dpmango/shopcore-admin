@@ -3,7 +3,9 @@ import { SettingsSvg, StatsMobileSvg } from '@c/Ui/Icons'
 
 import { IStatDetailsDto, IStatOperatorDto } from '@/core/interface/Stat'
 
-interface IStatCardProps extends IStatOperatorDto {}
+interface IStatCardProps extends IStatOperatorDto {
+  className?: string
+}
 
 const StatRenderer: React.FC<{ title: string; stat: IStatDetailsDto; index: number | string }> = ({
   stat,
@@ -23,11 +25,11 @@ const StatRenderer: React.FC<{ title: string; stat: IStatDetailsDto; index: numb
     </div>
   </div>
 )
-export const StatCard: React.FC<IStatCardProps> = ({ operator, id, stats }) => {
+export const StatCard: React.FC<IStatCardProps> = ({ className, operator, id, stats }) => {
   const dispatch = useAppDispatch()
 
   return (
-    <div className={cns('content-el stat-el', false && 'stat-el_green')} data-id={id}>
+    <div className={cns('content-el stat-el', className)} data-id={id}>
       <div className="stat-el__content">
         <div className="stat-el__block stat-el__block_1">
           {operator && (

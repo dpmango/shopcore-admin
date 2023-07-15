@@ -69,9 +69,11 @@ export const DashboardStat: React.FC = () => {
                       },
                     }}
                   />
-
+                </div>
+                <div className="block-content__el">
                   <StatCard
                     {...{
+                      className: 'stat-el_green',
                       id: '2',
                       operator: {
                         id: '2',
