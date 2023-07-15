@@ -108,6 +108,7 @@
     "useTheme": true,
     "orderPostproneApi": true,
     "orderHistoryApi": true,
-    "cns": true
+    "cns": true,
+    "numberShorten": true
   }
 }

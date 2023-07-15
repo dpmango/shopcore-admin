@@ -612,6 +612,10 @@ img {
       font-weight: 500;
       font-size: 12px;
       color: #c1352c;
+
+      &._plus {
+        color: #1f9c56;
+      }
     }
   }
 }

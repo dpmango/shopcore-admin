@@ -1,9 +1,17 @@
 import { IOperator } from './Shared'
-
-export interface IStatDto {
+export interface IStatDetailsDto {
+  value: number
+  change?: number | null
+}
+export interface IStatOperatorDto {
   id: string
-  created: number
   operator: IOperator
-  text: string
-  status: 1 | 2 | 3 | 4
+
+  stats: {
+    today: IStatDetailsDto
+    yesterday: IStatDetailsDto
+    currentWeek: IStatDetailsDto
+    lastWeek: IStatDetailsDto
+    total: IStatDetailsDto
+  }
 }

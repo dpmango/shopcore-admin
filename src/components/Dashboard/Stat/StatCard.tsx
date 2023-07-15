@@ -1,45 +1,48 @@
 import { ContentName, ContentUser, HistoryBtn } from '@c/Dashboard/Atom'
 import { SettingsSvg, StatsMobileSvg } from '@c/Ui/Icons'
 
-import { IStatDto } from '@/core/interface/Stat'
+import { IStatDetailsDto, IStatOperatorDto } from '@/core/interface/Stat'
 
-interface IStatCardProps extends IStatDto {}
+interface IStatCardProps extends IStatOperatorDto {}
 
-export const StatCard: React.FC<IStatCardProps> = ({ operator }) => {
+const StatRenderer: React.FC<{ title: string; stat: IStatDetailsDto; index: number | string }> = ({
+  stat,
+  title,
+  index,
+}) => (
+  <div className={cns('info-stat stat-el__el', `stat-el__el_${index}`)}>
+    <div className="info-stat__title">{title}</div>
+    <div className="info-stat__count">
+      {numberShorten(stat.value)}
+      {stat.change && (
+        <span className={cns(stat.change > 0 && '_plus')}>
+          {stat.change > 0 ? '+' : '-'}
+          {Math.abs(stat.change)}
+        </span>
+      )}
+    </div>
+  </div>
+)
+export const StatCard: React.FC<IStatCardProps> = ({ operator, id, stats }) => {
   const dispatch = useAppDispatch()
 
   return (
-    <div className={cns('content-el stat-el', false && 'stat-el_green')}>
+    <div className={cns('content-el stat-el', false && 'stat-el_green')} data-id={id}>
       <div className="stat-el__content">
         <div className="stat-el__block stat-el__block_1">
           {operator && (
             <ContentUser avatar={operator.avatar} title={operator.name} description={operator.id} />
           )}
         </div>
+
         <div className="stat-el__block stat-el__block_2">
-          <div className="info-stat stat-el__el stat-el__el_1">
-            <div className="info-stat__title">Сегодня</div>
-            <div className="info-stat__count">43</div>
-          </div>
-          <div className="info-stat stat-el__el stat-el__el_2">
-            <div className="info-stat__title">Вчера</div>
-            <div className="info-stat__count">40</div>
-          </div>
-          <div className="info-stat stat-el__el stat-el__el_3">
-            <div className="info-stat__title">Эта неделя</div>
-            <div className="info-stat__count">
-              400<span>-27</span>
-            </div>
-          </div>
-          <div className="info-stat stat-el__el stat-el__el_4">
-            <div className="info-stat__title">Прошлая неделя</div>
-            <div className="info-stat__count">427</div>
-          </div>
-          <div className="info-stat stat-el__el stat-el__el_5">
-            <div className="info-stat__title">Всего</div>
-            <div className="info-stat__count">2,76 млн</div>
-          </div>
+          <StatRenderer title="Сегодня" stat={stats.today} index="1" />
+          <StatRenderer title="Вчера" stat={stats.yesterday} index="2" />
+          <StatRenderer title="Эта неделя" stat={stats.currentWeek} index="3" />
+          <StatRenderer title="Прошлая неделя" stat={stats.lastWeek} index="3" />
+          <StatRenderer title="Всего" stat={stats.total} index="3" />
         </div>
+
         <div className="stat-el__block stat-el__block_3">
           <div className="content-btns">
             <Link to="/stats/1" className="content-btns__btn btn-def">

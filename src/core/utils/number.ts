@@ -46,3 +46,13 @@ export const Plurize = (number: number, one: string, two: string, five: string) 
   }
   return five
 }
+
+export const numberShorten = (num: number) => {
+  return Math.abs(num) >= 1.0e9
+    ? (Math.abs(num) / 1.0e9).toFixed(2) + ' млр.'
+    : Math.abs(num) >= 1.0e6
+    ? (Math.abs(num) / 1.0e6).toFixed(2) + ' млн.'
+    : Math.abs(num) >= 1.0e3
+    ? (Math.abs(num) / 1.0e3).toFixed(2) + ' тыс.'
+    : Math.abs(num)
+}

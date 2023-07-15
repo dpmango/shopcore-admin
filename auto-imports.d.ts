@@ -59,6 +59,7 @@ declare global {
   const markReadService: typeof import('./src/core/store/chat.store')['markReadService']
   const memo: typeof import('react')['memo']
   const minutesToTimestamp: typeof import('./src/core/utils/date')['minutesToTimestamp']
+  const numberShorten: typeof import('./src/core/utils/number')['numberShorten']
   const orderHistoryApi: typeof import('./src/core/api/orders.api')['orderHistoryApi']
   const orderPostproneApi: typeof import('./src/core/api/orders.api')['orderPostproneApi']
   const ordersStore: typeof import('./src/core/store/orders.store')['default']

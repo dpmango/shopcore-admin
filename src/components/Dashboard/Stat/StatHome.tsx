@@ -28,7 +28,6 @@ export const DashboardStat: React.FC = () => {
                   <div className="acts-stat__content">
                     <div className="acts-stat__el acts-stat__el_btn acts-stat__el_1 active">
                       Сегодня
-                      <TableCaretSvg />
                     </div>
                     <div className="acts-stat__el acts-stat__el_2">Вчера</div>
                     <div className="acts-stat__el acts-stat__el_btn acts-stat__el_3 active">
@@ -41,7 +40,66 @@ export const DashboardStat: React.FC = () => {
                 </div>
 
                 <div className="block-content__el">
-                  <StatCard />
+                  <StatCard
+                    {...{
+                      id: '1',
+                      operator: {
+                        id: '1',
+                        name: 'admin',
+                        position: 'admin',
+                      },
+                      stats: {
+                        today: {
+                          value: 1,
+                        },
+                        yesterday: {
+                          value: 2,
+                        },
+                        currentWeek: {
+                          value: 400,
+                          change: 24,
+                        },
+                        lastWeek: {
+                          value: 427,
+                          change: -1,
+                        },
+                        total: {
+                          value: 273223332,
+                        },
+                      },
+                    }}
+                  />
+
+                  <StatCard
+                    {...{
+                      id: '2',
+                      operator: {
+                        id: '2',
+                        name: 'manager',
+                        position: 'manager',
+                      },
+                      stats: {
+                        today: {
+                          value: 10,
+                        },
+                        yesterday: {
+                          value: 23,
+                          change: 2,
+                        },
+                        currentWeek: {
+                          value: 230,
+                          change: -24,
+                        },
+                        lastWeek: {
+                          value: 327,
+                          change: -50,
+                        },
+                        total: {
+                          value: 148832,
+                        },
+                      },
+                    }}
+                  />
                 </div>
               </div>
             </div>
