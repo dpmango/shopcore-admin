@@ -12,7 +12,7 @@ export interface IOrders {
   orders: IOrderDto[]
   cancellations: ICancellationDto[]
   loading: {
-    order: boolean
+    orders: boolean
     cancellation: boolean
   }
   filter: IFilter
@@ -22,7 +22,7 @@ const initialState: IOrders = {
   orders: [],
   cancellations: [],
   loading: {
-    order: false,
+    orders: false,
     cancellation: false,
   },
   filter: {
@@ -56,7 +56,7 @@ export const ordersStore = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(getOrdersService.pending, (state) => {
-      state.loading.order = true
+      state.loading.orders = true
     })
     builder.addCase(
       getOrdersService.fulfilled,
@@ -65,7 +65,7 @@ export const ordersStore = createSlice({
           state.orders = action.payload.sort((a, b) => (a.created < b.created ? 1 : -1))
         }
 
-        state.loading.order = false
+        state.loading.orders = false
       },
     )
     builder.addCase(getCancellationsService.pending, (state) => {

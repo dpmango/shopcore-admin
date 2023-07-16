@@ -29,7 +29,10 @@ export const DashboardNotifications: React.FC = () => {
     <div className="lk-content__content">
       <div className="lk-top-info">
         <div className="lk-content__title title-def lk-top-info__el">
-          Уведомления<span className="count-text title-def__count title-def__count_mob">27</span>
+          Уведомления
+          <span className="count-text title-def__count title-def__count_mob">
+            {loading ? '-' : notifications.length}
+          </span>
         </div>
       </div>
       <div className="block-content">

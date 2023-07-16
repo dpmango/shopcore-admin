@@ -32,7 +32,7 @@ export const DashboardCancellations: React.FC = () => {
           <div className="lk-content__title title-def lk-top-info__el">
             Отмены
             <span className="count-text title-def__count title-def__count_mob">
-              {cancellations.length}
+              {loading.cancellation ? '-' : cancellations.length}
             </span>
           </div>
         </div>

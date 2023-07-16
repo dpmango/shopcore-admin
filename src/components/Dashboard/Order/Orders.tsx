@@ -32,7 +32,10 @@ export const DashboardOrders: React.FC = () => {
       <div className="lk-content__content">
         <div className="lk-top-info">
           <div className="lk-content__title title-def lk-top-info__el">
-            Заказы<span className="count-text title-def__count">{orders.length}</span>
+            Заказы
+            <span className="count-text title-def__count">
+              {loading.orders ? '-' : orders.length}
+            </span>
             <div
               className="lk-top-info__btn btn-modal"
               onClick={() => dispatch(setModal({ name: 'modal-settings' }))}
@@ -88,7 +91,7 @@ export const DashboardOrders: React.FC = () => {
             </div>
           ))}
         </div>
-        <UiLoader active={loading.order} theme="page" />
+        <UiLoader active={loading.orders} theme="page" />
       </div>
 
       <ModalHistory />
