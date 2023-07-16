@@ -5,5 +5,5 @@ export interface INotificationDto {
   created: number
   operator: IOperator
   text: string
-  status: 1 | 2 | 3 | 4
+  // status: 1 | 2 | 3 | 4
 }

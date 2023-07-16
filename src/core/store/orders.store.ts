@@ -1,4 +1,3 @@
-import type { ISelectOption } from '@c/Ui/Select'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
@@ -48,7 +47,7 @@ export const getCancellationsService = createAsyncThunk('orders/cancellations', 
 })
 
 export const ordersStore = createSlice({
-  name: 'counter',
+  name: 'orders',
   initialState,
   reducers: {
     setFilter(state, action: PayloadAction<Partial<IFilter>>) {

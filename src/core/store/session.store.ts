@@ -27,7 +27,7 @@ const initialState: ISession = {
 }
 
 export const chatState = createSlice({
-  name: 'counter',
+  name: 'session',
   initialState,
   reducers: {
     resetUser(state, action: PayloadAction) {

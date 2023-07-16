@@ -30,7 +30,7 @@ export const ModalHistory: React.FC = () => {
 
   return (
     <UiModal name="history" modifier="history">
-      <ModalHead title="История заказа" id={modalParams.id} created={modalParams.create} />
+      <ModalHead title="История заказа" id={modalParams.id} created={modalParams.created} />
 
       <div className="modal-content__block">
         <UiLoader theme="inline" active={loading} throttleMs={50} />

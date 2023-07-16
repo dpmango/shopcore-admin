@@ -111,6 +111,12 @@
     "cns": true,
     "numberShorten": true,
     "fetchCancellationApi": true,
-    "getCancellationsService": true
+    "getCancellationsService": true,
+    "fetchNotificationsApi": true,
+    "notificationsStore": true,
+    "getNotificationsService": true,
+    "fetchOperatorStatApi": true,
+    "statsStore": true,
+    "getOperatorStatsService": true
   }
 }

@@ -5,7 +5,25 @@ import { CancelCard } from './CancelCard'
 
 export const DashboardCancellations: React.FC = () => {
   const { cancellations, loading } = useAppSelector((store) => store.ordersState)
+
   const dispatch = useAppDispatch()
+
+  const timer: { current: NodeJS.Timeout | null } = useRef(null)
+
+  useEffect(() => {
+    dispatch(getCancellationsService())
+
+    timer.current = setInterval(
+      () => {
+        dispatch(getCancellationsService())
+      },
+      1 * 60 * 1000 * import.meta.env.VITE_APP_TRASEHOLD,
+    )
+
+    return () => {
+      clearInterval(timer.current as NodeJS.Timeout)
+    }
+  }, [])
 
   return (
     <>

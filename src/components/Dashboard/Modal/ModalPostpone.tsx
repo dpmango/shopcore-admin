@@ -14,7 +14,7 @@ export const ModalPostpone: React.FC = () => {
 
   return (
     <UiModal name="postpone" modifier="postpone">
-      <ModalHead title="Отложить заказ" id={modalParams.id} created={modalParams.create} />
+      <ModalHead title="Отложить заказ" id={modalParams.id} created={modalParams.created} />
 
       <div className="block-info modal-content__block">
         <div className="block-info__title">На сколько откладываем</div>

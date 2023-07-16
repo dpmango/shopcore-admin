@@ -17,7 +17,7 @@ export const ModalCancelConfirm: React.FC = () => {
       <ModalHead
         title="Подтвердить отмену заказа"
         id={modalParams.id}
-        created={modalParams.create}
+        created={modalParams.created}
       />
 
       <div className="modal-content__block">

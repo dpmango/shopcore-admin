@@ -1,8 +1,30 @@
 import { WarningSvg } from '@c/Ui/Icons'
 
+import { UiLoader } from '@/components/Ui'
+
 import { NotificationCard } from './NotificationCard'
 
 export const DashboardNotifications: React.FC = () => {
+  const { notifications, loading } = useAppSelector((store) => store.notificationsStore)
+  const dispatch = useAppDispatch()
+
+  const timer: { current: NodeJS.Timeout | null } = useRef(null)
+
+  useEffect(() => {
+    dispatch(getNotificationsService())
+
+    timer.current = setInterval(
+      () => {
+        dispatch(getNotificationsService())
+      },
+      1 * 60 * 1000 * import.meta.env.VITE_APP_TRASEHOLD,
+    )
+
+    return () => {
+      clearInterval(timer.current as NodeJS.Timeout)
+    }
+  }, [])
+
   return (
     <div className="lk-content__content">
       <div className="lk-top-info">
@@ -11,29 +33,13 @@ export const DashboardNotifications: React.FC = () => {
         </div>
       </div>
       <div className="block-content">
-        <div className="block-content__el">
-          <NotificationCard
-            {...{
-              id: '1',
-              status: 1,
-              created: 1686240433,
-              operator: { name: 'Жора', position: 'admin', id: '123' },
-              text: 'Подключил карту 4403 1304 0023 8543 к аккаунту <span class="text-blue">server32034@gmail.com</span> хотя в заказе указан ruslan23424@gmail.com',
-            }}
-          />
-        </div>
+        {notifications.map((x, idx) => (
+          <div className="block-content__el" key={idx}>
+            <NotificationCard {...x} />
+          </div>
+        ))}
 
-        <div className="block-content__el">
-          <NotificationCard
-            {...{
-              id: '2',
-              status: 2,
-              created: 1686240433,
-              operator: { name: 'Жора', position: 'admin', id: '123' },
-              text: 'Странное выполнение заказа. Прошло с момента взятия <span class="text-red">46 секунд</span>.',
-            }}
-          />
-        </div>
+        <UiLoader active={loading} theme="page" />
       </div>
     </div>
   )

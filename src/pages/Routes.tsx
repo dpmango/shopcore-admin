@@ -1,3 +1,4 @@
+import { LayoutSidebar, ModalMenu } from '@c/Layout'
 import Cookies from 'js-cookie'
 import { Navigate, Outlet, Route, Routes } from 'react-router-dom'
 
@@ -23,7 +24,17 @@ const ProtectedRoute = () => {
     return <Navigate to="/auth" state={{ from: location }} replace />
   }
 
-  return <Outlet />
+  return (
+    <>
+      <div className={cns('layout')}>
+        <div className="lk-content">
+          <LayoutSidebar />
+          <Outlet />
+        </div>
+      </div>
+      <ModalMenu />
+    </>
+  )
 }
 
 const Router = () => {
