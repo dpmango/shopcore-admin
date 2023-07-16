@@ -109,6 +109,8 @@
     "orderPostproneApi": true,
     "orderHistoryApi": true,
     "cns": true,
-    "numberShorten": true
+    "numberShorten": true,
+    "fetchCancellationApi": true,
+    "getCancellationsService": true
   }
 }

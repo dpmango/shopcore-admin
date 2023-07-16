@@ -1,3 +1,5 @@
+import { IOperator } from './Shared'
+
 export interface IOrderDto {
   id: string
   created: number
@@ -6,6 +8,11 @@ export interface IOrderDto {
   problemCount: number
   item: IOrderItem
   where: IOrderWhere
+}
+
+export interface ICancellationDto extends IOrderDto {
+  comment: string
+  operator: IOperator
 }
 
 export interface IOrderItem {

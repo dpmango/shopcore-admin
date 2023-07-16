@@ -1,5 +1,4 @@
-import type { IApiResponse } from '@/core/interface/Api'
-import type { IOrderDto, IOrderHistroyDto } from '@/core/interface/Orders'
+import type { IApiResponse, ICancellationDto, IOrderDto, IOrderHistroyDto } from '@/core/interface'
 
 // Auth (авторизация от ТГ)
 export interface IFetchOrdersPayload {
@@ -13,6 +12,14 @@ export const fetchOrdersApi = async ({ type }: IFetchOrdersPayload) => {
       type: type || '',
     },
   })) as IApiResponse<IOrderDto[]>
+
+  return { data, error: !data }
+}
+
+export const fetchCancellationApi = async () => {
+  const { data, error } = (await api(`orders/cancellations`, {
+    method: 'GET',
+  })) as IApiResponse<ICancellationDto[]>
 
   return { data, error: !data }
 }

@@ -2,7 +2,7 @@
 import Cookies from 'js-cookie'
 import { FetchError, FetchOptions, ofetch } from 'ofetch'
 
-import type { IError } from '@/core/interface/Api'
+import type { IError } from '@/core/interface'
 
 interface IRequestOptions {
   method?: string

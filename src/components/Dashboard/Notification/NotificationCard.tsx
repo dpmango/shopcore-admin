@@ -1,7 +1,7 @@
 import { ContentName, ContentUser, HistoryBtn } from '@c/Dashboard/Atom'
 import { PointerSvg, TelegramBlueSvg, WarningSvg } from '@c/Ui/Icons'
 
-import { INotificationDto } from '@/core/interface/Notifications'
+import { INotificationDto } from '@/core/interface'
 
 interface INotificationCardProps extends INotificationDto {}
 

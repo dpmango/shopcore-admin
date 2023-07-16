@@ -4,7 +4,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import Cookies from 'js-cookie'
 
 // import { getChatList, getDialogUser, getMessagesByDialog, markRead } from '@/core/api/chat.api'
-import { IUser } from '@/core/interface/Auth'
+import { IUser } from '@/core/interface'
 
 export interface ISession {
   user: IUser | null

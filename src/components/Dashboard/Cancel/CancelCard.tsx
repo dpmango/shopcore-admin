@@ -1,7 +1,7 @@
 import { ContentName, ContentUser, HistoryBtn } from '@c/Dashboard/Atom'
 import { ClockSvg, PointerSvg, WarningWhiteSvg } from '@c/Ui/Icons'
 
-import { ICancellationDto } from '@/core/interface/Cancellations'
+import { ICancellationDto } from '@/core/interface'
 
 interface IOrderCardProps extends ICancellationDto {}
 
@@ -48,7 +48,7 @@ export const CancelCard: React.FC<IOrderCardProps> = ({
             </div>
             <div className="content-btns__btn btn-def">
               <ClockSvg />
-              <span className="btn-def__text">45</span>
+              <span className="btn-def__text">todo</span>
             </div>
             <div className="content-btns__btn btn-def">
               <WarningWhiteSvg />

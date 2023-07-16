@@ -2,7 +2,7 @@
 
 import { TLoginButton, TLoginButtonSize } from 'react-telegram-auth'
 
-import { ITelegramAuthDto } from '@/core/interface/Initialization'
+import { ITelegramAuthDto } from '@/core/interface'
 
 import { generateRandomShader } from './canvasGradinet'
 

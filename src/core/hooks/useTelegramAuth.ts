@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux'
 import { toast } from 'react-toastify'
 
 import { fetchAuth } from '@/core/api/session.api'
-import { ITelegramAuthDto } from '@/core/interface/Initialization'
 
 export const useTelegramAuth = () => {
   const dispatch = useAppDispatch()

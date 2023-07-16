@@ -1,7 +1,7 @@
 import { toast } from 'react-toastify'
 
 import { UiLoader, UiModal } from '@/components/Ui'
-import { IOrderHistroyDto } from '@/core/interface/Orders'
+import { IOrderHistroyDto } from '@/core/interface'
 
 import { ModalHead } from './Partials/ModalHead'
 

@@ -1,7 +1,7 @@
 import { ContentName, ContentUser, HistoryBtn } from '@c/Dashboard/Atom'
 import { SettingsSvg, StatsMobileSvg } from '@c/Ui/Icons'
 
-import { IStatDetailsDto, IStatOperatorDto } from '@/core/interface/Stat'
+import { IStatDetailsDto, IStatOperatorDto } from '@/core/interface'
 
 interface IStatCardProps extends IStatOperatorDto {
   className?: string

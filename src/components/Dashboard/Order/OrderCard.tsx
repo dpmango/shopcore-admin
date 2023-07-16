@@ -1,7 +1,7 @@
 import { ContentName, ContentUser, HistoryBtn } from '@c/Dashboard/Atom'
 import { PointerSvg, TelegramBlueSvg, WarningSvg } from '@c/Ui/Icons'
 
-import { IOrderDto } from '@/core/interface/Orders'
+import { IOrderDto } from '@/core/interface'
 
 interface IOrderCardProps extends IOrderDto {}
 

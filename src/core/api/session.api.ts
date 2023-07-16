@@ -1,6 +1,4 @@
-import type { IApiResponse } from '@/core/interface/Api'
-import type { IUser } from '@/core/interface/Auth'
-import type { IAuthDto, ITelegramAuthDto, IWhoisDto } from '@/core/interface/Initialization'
+import type { IApiResponse, IAuthDto, ITelegramAuthDto, IUser, IWhoisDto } from '@/core/interface'
 
 // Auth (авторизация от ТГ)
 export interface IAuthPayload {

@@ -2,26 +2,29 @@ import type { ISelectOption } from '@c/Ui/Select'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
+import { ICancellationDto, IOrderDto } from '@/core/interface'
 import type { RootState } from '@/core/store'
-
-import { IOrderDto } from '../interface/Orders'
 
 interface IFilter {
   type: 'afk' | 'work' | 'problem' | null
 }
 
 export interface IOrders {
-  orders: any[]
+  orders: IOrderDto[]
+  cancellations: ICancellationDto[]
   loading: {
     order: boolean
+    cancellation: boolean
   }
   filter: IFilter
 }
 
 const initialState: IOrders = {
   orders: [],
+  cancellations: [],
   loading: {
     order: false,
+    cancellation: false,
   },
   filter: {
     type: null,
@@ -34,6 +37,12 @@ export const getOrdersService = createAsyncThunk('orders/list', async (_, { getS
   } = getState() as RootState
 
   const { data, error } = await fetchOrdersApi({ ...filter })
+
+  return data
+})
+
+export const getCancellationsService = createAsyncThunk('orders/cancellations', async () => {
+  const { data, error } = await fetchCancellationApi()
 
   return data
 })
@@ -58,6 +67,19 @@ export const ordersStore = createSlice({
         }
 
         state.loading.order = false
+      },
+    )
+    builder.addCase(getCancellationsService.pending, (state) => {
+      state.loading.cancellation = true
+    })
+    builder.addCase(
+      getCancellationsService.fulfilled,
+      (state, action: PayloadAction<ICancellationDto[] | null>) => {
+        if (action.payload) {
+          state.cancellations = action.payload.sort((a, b) => (a.created < b.created ? 1 : -1))
+        }
+
+        state.loading.cancellation = false
       },
     )
   },

@@ -1,4 +1,4 @@
-import { IOrderItem } from '@/core/interface/Orders'
+import { IOrderItem } from '@/core/interface'
 
 interface IContentNameProps {
   className?: string
