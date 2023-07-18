@@ -5,7 +5,6 @@ export type IStatDetailsDto = number
 export interface IStatOperatorDto {
   id: string
   operator: IOperator
-
   stats: {
     today: IStatDetailsDto
     yesterday: IStatDetailsDto

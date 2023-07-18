@@ -1,5 +1,5 @@
 // 1000.00 -> 1 000.00
-export const formatPrice = (num: any, trailingZeros = 0, showFree = true) => {
+export const formatPrice = (num: any, trailingZeros = 0) => {
   const spacesRegex = /\B(?=(\d{3})+(?!\d))/g
   let value = ''
   if (num === null || num === undefined) {
@@ -12,15 +12,7 @@ export const formatPrice = (num: any, trailingZeros = 0, showFree = true) => {
     value = parseFloat(num).toFixed(trailingZeros).replace(spacesRegex, ' ')
   }
 
-  if (+value === 0) {
-    if (showFree) {
-      return 'Бесплатно'
-    } else {
-      return ''
-    }
-  }
-
-  return `${value} ₽`
+  return value
 }
 
 export const pad = (v: string | number, size = 2) => {

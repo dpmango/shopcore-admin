@@ -47,7 +47,7 @@ export const StatCard: React.FC<IStatCardProps> = ({ className, operator, id, st
 
         <div className="stat-el__block stat-el__block_3">
           <div className="content-btns">
-            <Link to="/stats/1" className="content-btns__btn btn-def">
+            <Link to={`/stats/${id}`} className="content-btns__btn btn-def">
               <StatsMobileSvg className="btn-def__icon" />
               <span className="btn-def__text">Статистика</span>
             </Link>

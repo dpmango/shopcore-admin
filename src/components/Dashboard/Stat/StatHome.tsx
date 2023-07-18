@@ -1,6 +1,9 @@
 import { ModalAccess, StatCard } from '@c/Dashboard'
 import { UiLoader } from '@c/Ui'
 import { SettingsSvg, TableCaretSvg } from '@c/Ui/Icons'
+import dayjs from 'dayjs'
+
+import { IStatOperatorDto } from '@/core/interface'
 
 import { MobileFilter } from './Filter/MobileFilter'
 
@@ -8,22 +11,85 @@ export const DashboardStat: React.FC = () => {
   const { operators, loading } = useAppSelector((store) => store.statsStore)
   const dispatch = useAppDispatch()
 
-  const timer: { current: NodeJS.Timeout | null } = useRef(null)
+  // table filter
+  const [curFilter, setCurFilter] = useState({
+    dir: 0,
+    idx: 0,
+  })
 
-  useEffect(() => {
-    dispatch(getOperatorStatsService())
-
-    timer.current = setInterval(
-      () => {
-        dispatch(getOperatorStatsService())
-      },
-      1 * 60 * 1000 * import.meta.env.VITE_APP_TRASEHOLD,
-    )
-
-    return () => {
-      clearInterval(timer.current as NodeJS.Timeout)
-    }
+  const filtersAvailable = useMemo(() => {
+    return [
+      { label: 'Сегодня' },
+      { label: 'Вчера' },
+      { label: 'Эта неделя' },
+      { label: 'Прошлая неделя' },
+      { label: 'Всего' },
+    ]
   }, [])
+
+  const updateFilter = (idx: number) => {
+    if (idx === curFilter.idx) {
+      setCurFilter({ idx, dir: curFilter.dir ? 0 : 1 })
+    } else {
+      setCurFilter({ idx, dir: 0 })
+    }
+  }
+
+  const operatorsFiltered = useMemo(() => {
+    return [...operators].sort((a, b) => {
+      let condition = a.stats.today < b.stats.today
+      if (curFilter.idx === 1) {
+        condition = a.stats.yesterday < b.stats.yesterday
+      } else if (curFilter.idx === 2) {
+        condition = a.stats.currentWeek < b.stats.currentWeek
+      } else if (curFilter.idx === 3) {
+        condition = a.stats.lastWeek < b.stats.lastWeek
+      } else if (curFilter.idx === 4) {
+        condition = a.stats.total < b.stats.total
+      }
+
+      if (curFilter.dir === 1) {
+        return condition ? -1 : 1
+      }
+
+      return condition ? 1 : -1
+    })
+  }, [operators, curFilter])
+
+  // stats
+  const statsComputed = useMemo(() => {
+    // compute
+    const currentWeek = operators.reduce((acc, x) => acc + x.stats.currentWeek || 0, 0)
+    const prevWeek = operators.reduce((acc, x) => acc + x.stats.lastWeek || 0, 0)
+
+    // labels
+    const curWeekDate = dayjs()
+    const prevWeelDate = dayjs().subtract(1, 'week')
+    const currentWeekDate = {
+      start: curWeekDate.startOf('week').format('DD MMM'),
+      end: curWeekDate.endOf('week').format('DD MMM'),
+    }
+    const prevWeekDate = {
+      start: prevWeelDate.startOf('week').format('DD MMM'),
+      end: prevWeelDate.endOf('week').format('DD MMM'),
+    }
+
+    return [
+      {
+        label: 'Выполнено заказов за текущую рабочую неделю',
+        date: `${currentWeekDate.start} ... ${currentWeekDate.end}`,
+        value: formatPrice(currentWeek, 0),
+      },
+      {
+        label: 'Выполнено заказов за предыдущую рабочую неделю',
+        date: `${prevWeekDate.start} ... ${prevWeekDate.end}`,
+        value: formatPrice(prevWeek, 0),
+      },
+    ]
+  }, [operators])
+
+  // data hooks
+  const { initialDataLoaded } = useDateUpdater({ storeThunk: getOperatorStatsService })
 
   return (
     <>
@@ -43,56 +109,48 @@ export const DashboardStat: React.FC = () => {
           <div className="sec-stat__content">
             <div className="sec-stat__left">
               <div className="block-content">
+                <UiLoader active={loading} theme={initialDataLoaded ? 'line' : 'page'} />
+
                 <div className="acts-stat">
                   <div className="acts-stat__content">
-                    <div className="acts-stat__el acts-stat__el_btn acts-stat__el_1 active">
-                      Сегодня
-                    </div>
-                    <div className="acts-stat__el acts-stat__el_2">Вчера</div>
-                    <div className="acts-stat__el acts-stat__el_btn acts-stat__el_3 active">
-                      Эта неделя
-                      <TableCaretSvg />
-                    </div>
-                    <div className="acts-stat__el acts-stat__el_4">Прошлая неделя</div>
-                    <div className="acts-stat__el acts-stat__el_5">Всего</div>
+                    {filtersAvailable.map((x, idx) => (
+                      <div
+                        key={idx}
+                        onClick={() => updateFilter(idx)}
+                        className={cns(
+                          `acts-stat__el acts-stat__el_btn acts-stat__el_${idx + 1}`,
+                          curFilter.idx === idx && 'active',
+                          curFilter.dir === 1 && '_desc',
+                        )}
+                      >
+                        {x.label}
+                        {curFilter.idx === idx && <TableCaretSvg />}
+                      </div>
+                    ))}
                   </div>
                 </div>
 
-                {operators.map((operator) => (
+                {operatorsFiltered.map((operator) => (
                   <div className="block-content__el" key={operator.id}>
                     <StatCard {...operator} />
                   </div>
                 ))}
-
-                <UiLoader active={loading} theme="page" />
               </div>
             </div>
 
             <div className="sec-stat__right">
-              <div className="block-stat-info">
-                <div className="block-stat-info__title">
-                  Выполнено заказов за текущую рабочую неделю
-                </div>
-                <div className="block-stat-info__text">10 июня ... 16 июня</div>
-                <div className="block-stat-info__bottom">
-                  <div className="block-stat-info__count">
-                    <span className="block-stat-info__count-span">+354</span>
-                    <span className="block-stat-info__count-text">86 541</span>
+              {statsComputed.map((x, idx) => (
+                <div className="block-stat-info" key={idx}>
+                  <div className="block-stat-info__title">{x.label}</div>
+                  <div className="block-stat-info__text">{x.date}</div>
+                  <div className="block-stat-info__bottom">
+                    <div className="block-stat-info__count">
+                      {/* <span className="block-stat-info__count-span">+354</span> */}
+                      <span className="block-stat-info__count-text">{x.value}</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-
-              <div className="block-stat-info">
-                <div className="block-stat-info__title">
-                  Выполнено заказов за предыдущую рабочую неделю
-                </div>
-                <div className="block-stat-info__text">10 июня ... 16 июня</div>
-                <div className="block-stat-info__bottom">
-                  <div className="block-stat-info__count">
-                    <span className="block-stat-info__count-text">86 541</span>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>

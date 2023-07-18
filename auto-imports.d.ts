@@ -99,6 +99,7 @@ declare global {
   const useCallback: typeof import('react')['useCallback']
   const useClickOutside: typeof import('./src/core/hooks/useClickOutside')['useClickOutside']
   const useContext: typeof import('react')['useContext']
+  const useDateUpdater: typeof import('./src/core/hooks/useDateUpdater')['useDateUpdater']
   const useDebugValue: typeof import('react')['useDebugValue']
   const useDeferredValue: typeof import('react')['useDeferredValue']
   const useEffect: typeof import('react')['useEffect']

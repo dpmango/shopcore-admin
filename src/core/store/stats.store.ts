@@ -31,7 +31,7 @@ export const statsStore = createSlice({
       getOperatorStatsService.fulfilled,
       (state, action: PayloadAction<IStatOperatorDto[] | null>) => {
         if (action.payload) {
-          state.operators = action.payload.sort((a, b) => (a.created < b.created ? 1 : -1))
+          state.operators = action.payload
         }
 
         state.loading = false

@@ -8,22 +8,8 @@ export const DashboardNotifications: React.FC = () => {
   const { notifications, loading } = useAppSelector((store) => store.notificationsStore)
   const dispatch = useAppDispatch()
 
-  const timer: { current: NodeJS.Timeout | null } = useRef(null)
-
-  useEffect(() => {
-    dispatch(getNotificationsService())
-
-    timer.current = setInterval(
-      () => {
-        dispatch(getNotificationsService())
-      },
-      1 * 60 * 1000 * import.meta.env.VITE_APP_TRASEHOLD,
-    )
-
-    return () => {
-      clearInterval(timer.current as NodeJS.Timeout)
-    }
-  }, [])
+  // data hooks
+  const { initialDataLoaded } = useDateUpdater({ storeThunk: getNotificationsService })
 
   return (
     <div className="lk-content__content">
@@ -42,7 +28,7 @@ export const DashboardNotifications: React.FC = () => {
           </div>
         ))}
 
-        <UiLoader active={loading} theme="page" />
+        <UiLoader active={loading} theme={initialDataLoaded ? 'line' : 'page'} />
       </div>
     </div>
   )

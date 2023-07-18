@@ -568,12 +568,6 @@ img {
     &_btn {
       cursor: pointer;
       user-select: none;
-
-      &.active {
-        svg {
-          transform: rotate(180deg);
-        }
-      }
     }
 
     &_3 {
@@ -587,6 +581,13 @@ img {
     svg {
       flex: none;
       margin-left: 2px;
+      transition: transform 0.2s ease;
+    }
+
+    &._desc {
+      svg {
+        transform: rotate(180deg);
+      }
     }
   }
 }

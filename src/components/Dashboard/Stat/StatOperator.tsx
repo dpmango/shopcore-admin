@@ -1,12 +1,34 @@
 import { FilterCore } from '@c/Dashboard/Stat/Filter/FilterCore'
-import { UiCheckbox, UiSelect } from '@c/Ui'
-import { BackArrowSvg, CheckmarkCheckboxSvg, SettingsSvg } from '@c/Ui/Icons'
+import { UiSelect } from '@c/Ui'
+import { BackArrowSvg, SettingsSvg } from '@c/Ui/Icons'
+import { toast } from 'react-toastify'
+
+import { IStatOperatorDetailsDto } from '@/core/interface'
 
 import { ChartRenderer } from './Chart/ChartRenderer'
 import { MobileFilterOperator } from './Filter/MobileFilterOperator'
 
 export const DashboardStatOperator: React.FC = () => {
   const dispatch = useAppDispatch()
+  const { modal, modalParams } = useAppSelector((store) => store.sesionState)
+
+  const [operator, setOperator] = useState<IStatOperatorDetailsDto | null>(null)
+  const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    const getOperatorDetails = async () => {
+      setLoading(true)
+      const { data } = await fetchOperatorApi({ id: modalParams.id })
+      setLoading(false)
+
+      if (!data?.permissions) {
+        // @ts-ignore
+        toast.error(data?.message || '')
+      }
+    }
+
+    getOperatorDetails()
+  }, [modal, modalParams.id])
 
   return (
     <>
@@ -31,12 +53,12 @@ export const DashboardStatOperator: React.FC = () => {
               alt=""
             />
             <div className="content-user-2__name">Жора</div>
-            <div className="content-user-2__info">3302468557</div>
+            <div className="content-user-2__info">{operator?.operator.name}</div>
           </div>
           <div className="stat-top-info__info">
             <div className="stat-top-info__info-mob info-descrp">
               <div className="info-descrp__title">Номер</div>
-              <div className="info-descrp__text">3302468557</div>
+              <div className="info-descrp__text">{operator?.operator.id}</div>
             </div>
             <div className="stat-top-info__info-block content-user-3">
               <div className="content-user-3__text">

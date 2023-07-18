@@ -1,5 +1,5 @@
 interface ILoaderProps {
-  theme?: 'inline' | 'page'
+  theme?: 'inline' | 'page' | 'line'
   active: boolean
   throttleMs?: number
 }

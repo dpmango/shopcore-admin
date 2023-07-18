@@ -101,6 +101,31 @@
     }
   }
 
+  &.line {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    width: 0;
+    height: 6px;
+    background: #1f75ea;
+    pointer-events: none;
+
+    .loader__wrapper {
+      display: none;
+    }
+
+    &._active {
+      animation: getWidth 1.6s ease-in infinite;
+    }
+  }
+
+  @keyframes getWidth {
+    100% {
+      width: 100%;
+    }
+  }
+
   &.page {
     position: absolute;
     display: flex;
