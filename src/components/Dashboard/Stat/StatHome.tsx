@@ -1,9 +1,11 @@
 import { ModalAccess, StatCard } from '@c/Dashboard'
+import { UiLoader } from '@c/Ui'
 import { SettingsSvg, TableCaretSvg } from '@c/Ui/Icons'
 
 import { MobileFilter } from './Filter/MobileFilter'
 
 export const DashboardStat: React.FC = () => {
+  const { operators, loading } = useAppSelector((store) => store.statsStore)
   const dispatch = useAppDispatch()
 
   const timer: { current: NodeJS.Timeout | null } = useRef(null)
@@ -56,70 +58,13 @@ export const DashboardStat: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="block-content__el">
-                  <StatCard
-                    {...{
-                      id: '1',
-                      operator: {
-                        id: '1',
-                        name: 'admin',
-                        position: 'admin',
-                      },
-                      stats: {
-                        today: {
-                          value: 1,
-                        },
-                        yesterday: {
-                          value: 2,
-                        },
-                        currentWeek: {
-                          value: 400,
-                          change: 24,
-                        },
-                        lastWeek: {
-                          value: 427,
-                          change: -1,
-                        },
-                        total: {
-                          value: 273223332,
-                        },
-                      },
-                    }}
-                  />
-                </div>
-                <div className="block-content__el">
-                  <StatCard
-                    {...{
-                      className: 'stat-el_green',
-                      id: '2',
-                      operator: {
-                        id: '2',
-                        name: 'manager',
-                        position: 'manager',
-                      },
-                      stats: {
-                        today: {
-                          value: 10,
-                        },
-                        yesterday: {
-                          value: 23,
-                          change: 2,
-                        },
-                        currentWeek: {
-                          value: 230,
-                          change: -24,
-                        },
-                        lastWeek: {
-                          value: 327,
-                          change: -50,
-                        },
-                        total: {
-                          value: 148832,
-                        },
-                      },
-                    }}
-                  />
-                </div>
+                {operators.map((operator) => (
+                  <div className="block-content__el" key={operator.id}>
+                    <StatCard {...operator} />
+                  </div>
+                ))}
+
+                <UiLoader active={loading} theme="page" />
               </div>
             </div>
 

@@ -50,3 +50,19 @@ export const orderPostproneApi = async (payload: IOrderPostpronePayload) => {
 
   return { data, error: !data }
 }
+
+export interface IOrderHideCancelledPayload {
+  id: string
+  like: boolean
+  comment: string
+}
+
+// [post] Подтвердить отмену заказу
+export const orderHideCancelledApi = async (payload: IOrderHideCancelledPayload) => {
+  const { data, error } = (await api(`order/hidecancelled`, {
+    method: 'POST',
+    body: payload,
+  })) as IApiResponse<null>
+
+  return { data, error: !data }
+}

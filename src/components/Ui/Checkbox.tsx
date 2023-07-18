@@ -7,6 +7,7 @@ interface ICheckboxProps {
   className?: string
   baseName?: string
   isChecked: boolean
+  disabled?: boolean
   error?: string | boolean
   counter?: number | string
   onChange: () => void

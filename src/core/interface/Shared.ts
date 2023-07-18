@@ -4,3 +4,8 @@ export interface IOperator {
   name: string
   position: string
 }
+
+export interface IMessageResponseDto {
+  message: string
+  status: boolean
+}

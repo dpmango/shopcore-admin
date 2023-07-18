@@ -15,13 +15,13 @@ const StatRenderer: React.FC<{ title: string; stat: IStatDetailsDto; index: numb
   <div className={cns('info-stat stat-el__el', `stat-el__el_${index}`)}>
     <div className="info-stat__title">{title}</div>
     <div className="info-stat__count">
-      {numberShorten(stat.value)}
-      {stat.change && (
+      {numberShorten(stat)}
+      {/* {stat.change && (
         <span className={cns(stat.change > 0 && '_plus')}>
           {stat.change > 0 ? '+' : '-'}
           {Math.abs(stat.change)}
         </span>
-      )}
+      )} */}
     </div>
   </div>
 )
@@ -53,7 +53,9 @@ export const StatCard: React.FC<IStatCardProps> = ({ className, operator, id, st
             </Link>
             <button
               className="content-btns__btn btn-def btn-modal"
-              onClick={() => dispatch(setModal({ name: 'modal-access' }))}
+              onClick={() =>
+                dispatch(setModal({ name: 'operator-access', params: { ...operator } }))
+              }
             >
               <SettingsSvg className="btn-def__icon" />
 

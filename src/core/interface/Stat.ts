@@ -1,8 +1,7 @@
 import { IOperator } from './Shared'
-export interface IStatDetailsDto {
-  value: number
-  change?: number | null
-}
+
+export type IStatDetailsDto = number
+
 export interface IStatOperatorDto {
   id: string
   operator: IOperator
@@ -14,4 +13,16 @@ export interface IStatOperatorDto {
     lastWeek: IStatDetailsDto
     total: IStatDetailsDto
   }
+}
+
+export interface IStatOperatorDetailsDto {
+  status: boolean
+  permissions: IStatPermission[]
+  operator: IOperator
+}
+
+export interface IStatPermission {
+  id: string
+  name: string
+  enabled: boolean
 }

@@ -1,5 +1,4 @@
-import { ContentName, ContentUser, HistoryBtn } from '@c/Dashboard/Atom'
-import { PointerSvg, TelegramBlueSvg, WarningSvg } from '@c/Ui/Icons'
+import { ContentName, ContentUser } from '@c/Dashboard/Atom'
 
 import { INotificationDto } from '@/core/interface'
 
@@ -10,7 +9,6 @@ export const NotificationCard: React.FC<INotificationCardProps> = ({
   created,
   operator,
   text,
-  status,
 }) => {
   const dispatch = useAppDispatch()
 
@@ -30,9 +28,6 @@ export const NotificationCard: React.FC<INotificationCardProps> = ({
         </div>
         <div className="notifications-el__block notifications-el__block_3">
           <div className="text-info" dangerouslySetInnerHTML={{ __html: text }} />
-          {/* Подключил карту <span className="text-green">4403 1304 0023 8543</span> к аккаунту{' '}
-            <span className="text-blue">server32034@gmail.com</span> хотя в заказе указан{' '}
-            <span className="text-blue">ruslan23424@gmail.com</span> */}
         </div>
       </div>
     </div>
