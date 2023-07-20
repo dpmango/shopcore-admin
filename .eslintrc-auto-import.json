@@ -106,7 +106,7 @@
     "setModal": true,
     "setTheme": true,
     "useTheme": true,
-    "orderPostproneApi": true,
+    "orderPostponeApi": true,
     "orderHistoryApi": true,
     "cns": true,
     "numberShorten": true,
@@ -122,6 +122,7 @@
     "fetchOperatorApi": true,
     "saveOperatorAccessApi": true,
     "orderHideCancelledApi": true,
-    "useDateUpdater": true
+    "useDateUpdater": true,
+    "orderPostproneApi": true
   }
 }

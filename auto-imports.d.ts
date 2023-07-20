@@ -71,6 +71,7 @@ declare global {
   const operator: typeof import('./src/core/api/stat.api')['operator']
   const orderHideCancelledApi: typeof import('./src/core/api/orders.api')['orderHideCancelledApi']
   const orderHistoryApi: typeof import('./src/core/api/orders.api')['orderHistoryApi']
+  const orderPostponeApi: typeof import('./src/core/api/orders.api')['orderPostponeApi']
   const orderPostproneApi: typeof import('./src/core/api/orders.api')['orderPostproneApi']
   const ordersStore: typeof import('./src/core/store/orders.store')['default']
   const pad: typeof import('./src/core/utils/number')['pad']

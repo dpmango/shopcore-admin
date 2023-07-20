@@ -1,4 +1,10 @@
-import type { IApiResponse, ICancellationDto, IOrderDto, IOrderHistroyDto } from '@/core/interface'
+import type {
+  IApiResponse,
+  ICancellationDto,
+  IMessageResponseDto,
+  IOrderDto,
+  IOrderHistroyDto,
+} from '@/core/interface'
 
 // Auth (авторизация от ТГ)
 export interface IFetchOrdersPayload {
@@ -42,11 +48,11 @@ export interface IOrderPostpronePayload {
   minutes: number
 }
 
-export const orderPostproneApi = async (payload: IOrderPostpronePayload) => {
-  const { data, error } = (await api(`order/postprone`, {
+export const orderPostponeApi = async (payload: IOrderPostpronePayload) => {
+  const { data, error } = (await api(`order/postpone`, {
     method: 'POST',
     body: payload,
-  })) as IApiResponse<any>
+  })) as IApiResponse<IMessageResponseDto>
 
   return { data, error: !data }
 }

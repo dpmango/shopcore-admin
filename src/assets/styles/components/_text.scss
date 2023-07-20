@@ -262,6 +262,26 @@
       }
     }
   }
+
+  &._active {
+    .estimation-btn__dec {
+      background: #1f9c56;
+
+      path {
+        fill: #fff;
+      }
+    }
+
+    &.estimation-btn_red {
+      .estimation-btn__dec {
+        background: #c1352c;
+
+        path {
+          fill: #fff;
+        }
+      }
+    }
+  }
 }
 
 .estimation-btns {

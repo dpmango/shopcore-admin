@@ -12,7 +12,7 @@ export const ModalPostpone: React.FC = () => {
   const [comment, setComment] = useState('')
 
   const handleSubmit = async () => {
-    const { data, error } = await orderPostproneApi({
+    const { data, error } = await orderPostponeApi({
       id: modalParams.id,
       reason: comment,
       minutes: delayPeriod,
@@ -20,7 +20,7 @@ export const ModalPostpone: React.FC = () => {
     if (error) {
       toast.error(`Ошибка, попробуйте снова`)
     } else {
-      toast.success(`Заказ ${modalParams.id} отложен на ${delayPeriod}`)
+      toast.success(data.message)
       dispatch(closeModal())
     }
   }

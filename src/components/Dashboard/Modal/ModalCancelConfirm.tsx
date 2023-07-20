@@ -37,7 +37,10 @@ export const ModalCancelConfirm: React.FC = () => {
 
       <div className="modal-content__block">
         <div className="estimation-btns">
-          <label className="estimation-btns__btn estimation-btn" onClick={() => setLike(true)}>
+          <label
+            className={cns('estimation-btns__btn estimation-btn', like === true && '_active')}
+            onClick={() => setLike(true)}
+          >
             <input
               className="estimation-btn__inp"
               type="radio"
@@ -47,12 +50,15 @@ export const ModalCancelConfirm: React.FC = () => {
                 e.stopPropagation()
               }}
             />
-            <div className="estimation-btn__dec">
+            <div className={cns('estimation-btn__dec')}>
               <LikeSvg />
             </div>
           </label>
           <label
-            className="estimation-btns__btn estimation-btn estimation-btn_red"
+            className={cns(
+              'estimation-btns__btn estimation-btn estimation-btn_red',
+              like === false && '_active',
+            )}
             onClick={() => setLike(false)}
           >
             <input
@@ -64,7 +70,7 @@ export const ModalCancelConfirm: React.FC = () => {
                 e.stopPropagation()
               }}
             />
-            <div className="estimation-btn__dec">
+            <div className={cns('estimation-btn__dec')}>
               <DislikeSvg />
             </div>
           </label>
