@@ -32,11 +32,7 @@ export const OrderCard: React.FC<IOrderCardProps> = ({
           <ContentName item={item} />
         </div>
         <div className="order-el__block order-el__block_3">
-          <ContentUser
-            avatar={'https://randomuser.me/api/portraits/men/74.jpg'}
-            title={where.name}
-            description={dateAgo(where.time)}
-          />
+          <ContentUser avatar={where.ava} title={where.name} description={dateAgo(where.time)} />
         </div>
         <div className="order-el__block order-el__block_4">
           <div className="content-btns">

@@ -23,6 +23,7 @@ export interface IOrderItem {
 export interface IOrderWhere {
   name: string
   time: number
+  ava: string
 }
 
 export interface IOrderHistroyDto {
