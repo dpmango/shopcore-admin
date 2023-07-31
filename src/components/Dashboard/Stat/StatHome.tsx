@@ -109,7 +109,7 @@ export const DashboardStat: React.FC = () => {
           <div className="sec-stat__content">
             <div className="sec-stat__left">
               <div className="block-content">
-                <UiLoader active={loading} theme={initialDataLoaded ? 'line' : 'page'} />
+                <UiLoader active={loading.list} theme={initialDataLoaded ? 'line' : 'page'} />
 
                 <div className="acts-stat">
                   <div className="acts-stat__content">

@@ -25,3 +25,7 @@ export interface IStatPermission {
   name: string
   enabled: boolean
 }
+
+export interface IOperatorStatDto {
+  [key: string]: { [key: string]: number }
+}

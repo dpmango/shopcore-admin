@@ -1,43 +1,34 @@
 import { FilterCore } from '@c/Dashboard/Stat/Filter/FilterCore'
-import { UiSelect } from '@c/Ui'
+import { UiLoader, UiSelect } from '@c/Ui'
 import { BackArrowSvg, SettingsSvg } from '@c/Ui/Icons'
 import { toast } from 'react-toastify'
-
-import { IStatOperatorDetailsDto } from '@/core/interface'
 
 import { ChartRenderer } from './Chart/ChartRenderer'
 import { MobileFilterOperator } from './Filter/MobileFilterOperator'
 
 export const DashboardStatOperator: React.FC = () => {
   const dispatch = useAppDispatch()
-  const { modal, modalParams } = useAppSelector((store) => store.sesionState)
+  const { loading, operator, stats } = useAppSelector((store) => store.statsStore)
 
-  const [operator, setOperator] = useState<IStatOperatorDetailsDto | null>(null)
-  const [loading, setLoading] = useState(false)
+  const params = useParams()
 
-  useEffect(() => {
-    const getOperatorDetails = async () => {
-      setLoading(true)
-      const { data } = await fetchOperatorApi({ id: modalParams.id })
-      setLoading(false)
-
-      if (!data?.permissions) {
-        // @ts-ignore
-        toast.error(data?.message || '')
-      }
-    }
-
-    getOperatorDetails()
-  }, [modal, modalParams.id])
+  const { initialDataLoaded } = useDateUpdater({
+    storeThunk: getOperatorDetailsService,
+    thunkParams: {
+      id: params.id || '',
+      from: '01.07.2023',
+      to: '30.07.2023',
+    },
+  })
 
   return (
     <>
       <div className="lk-content__content">
         <div className="stat-top-info">
           <div className="stat-top-info__acts">
-            <a className="stat-top-info__prev prev-btn" href="#">
+            <Link className="stat-top-info__prev prev-btn" to="/stats">
               <BackArrowSvg />
-            </a>
+            </Link>
             <div className="stat-top-info__title">Статистика оператора</div>
             <button
               className="stat-top-info__btn btn-def-icon btn-modal"
@@ -49,11 +40,14 @@ export const DashboardStatOperator: React.FC = () => {
           <div className="stat-top-info__user content-user-2">
             <img
               className="content-user-2__img"
-              src="https://randomuser.me/api/portraits/men/74.jpg"
-              alt=""
+              src={
+                operator?.operator.avatar ||
+                'https://media.istockphoto.com/id/1223671392/vector/default-profile-picture-avatar-photo-placeholder-vector-illustration.jpg?s=170x170&k=20&c=pVkxcoiVUlD0uOzasLU41qdrAQpT1B3vBfKSJQWuNq4='
+              }
+              alt={operator?.operator.name}
             />
-            <div className="content-user-2__name">Жора</div>
-            <div className="content-user-2__info">{operator?.operator.name}</div>
+            <div className="content-user-2__name">{operator?.operator.name}</div>
+            <div className="content-user-2__info">{operator?.operator.position}</div>
           </div>
           <div className="stat-top-info__info">
             <div className="stat-top-info__info-mob info-descrp">
@@ -62,7 +56,7 @@ export const DashboardStatOperator: React.FC = () => {
             </div>
             <div className="stat-top-info__info-block content-user-3">
               <div className="content-user-3__text">
-                Закреплен <span>за менеджером</span>
+                ? Закреплен <span>за менеджером</span>
               </div>
               <div className="content-user-3__user">
                 <img
@@ -105,7 +99,9 @@ export const DashboardStatOperator: React.FC = () => {
             <div className="sec-chart__content">
               <div className="sec-chart__left">
                 <div className="block-chart">
-                  <ChartRenderer />
+                  {stats && <ChartRenderer data={stats} />}
+
+                  <UiLoader active={loading.stats} theme={initialDataLoaded ? 'line' : 'page'} />
                 </div>
               </div>
               <div className="sec-chart__right">

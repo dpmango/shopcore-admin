@@ -123,6 +123,9 @@
     "saveOperatorAccessApi": true,
     "orderHideCancelledApi": true,
     "useDateUpdater": true,
-    "orderPostproneApi": true
+    "orderPostproneApi": true,
+    "fetchOperatorStatsApi": true,
+    "fetchOperatorsApi": true,
+    "getOperatorDetailsService": true
   }
 }
