@@ -29,3 +29,10 @@ export interface IStatPermission {
 export interface IOperatorStatDto {
   [key: string]: { [key: string]: number }
 }
+
+export interface IChartConvertedDto {
+  title: string
+  date: string
+  week: number
+  value: number
+}

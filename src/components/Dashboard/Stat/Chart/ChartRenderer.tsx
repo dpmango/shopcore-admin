@@ -1,43 +1,25 @@
 import { ChartData } from 'chart.js'
 import Chart, { ChartConfiguration } from 'chart.js/auto'
 import dayjs from 'dayjs'
-import groupBy from 'lodash/groupBy'
+import { Dictionary } from 'lodash'
 
-import { IOperatorStatDto } from '@/core/interface'
+import { IChartConvertedDto, IOperatorStatDto } from '@/core/interface'
 
 import { colorMapper, createDatasetStyles } from './chart-styler'
 
 interface IChartRenderer {
-  data: IOperatorStatDto
+  recordsByTitle: Dictionary<IChartConvertedDto[]>
 }
 
-export const ChartRenderer: React.FC<IChartRenderer> = ({ data }) => {
+export const ChartRenderer: React.FC<IChartRenderer> = ({ recordsByTitle }) => {
   const canvasRef = useRef(null)
   const chartInstance = useRef<any | null>(null)
 
   const chartRenderData = useMemo(() => {
-    // Convert Dataset
-    if (!data) return null
-    const records = [] as { title: string; date: string; week: number; value: number }[]
-    Object.keys(data).forEach((x) => {
-      const djs = dayjs(x, 'DD.MM.YYYY', true)
-      const titlesDto = data[x]
-
-      Object.keys(titlesDto).forEach((title: string) => {
-        records.push({
-          title: title,
-          date: djs.format('DD MM YYYY'),
-          week: djs.day(),
-          value: +titlesDto[title] || 0,
-        })
-      })
-    })
-
-    const recordsByTitlte = groupBy(records, 'title')
-
+    if (!recordsByTitle) return
     // create dataset by weekdays 0 - 6
-    const dataSets = Object.keys(recordsByTitlte).map((x, idx) => {
-      const titleRecords = recordsByTitlte[x]
+    const dataSets = Object.keys(recordsByTitle).map((x, idx) => {
+      const titleRecords = recordsByTitle[x]
 
       const markupLabels = [...new Array(7)].map((_, idx) => {
         const matchWeekday = titleRecords.find((x) => x.week === idx)
@@ -73,7 +55,7 @@ export const ChartRenderer: React.FC<IChartRenderer> = ({ data }) => {
     }
 
     return chartData as ChartData
-  }, [data])
+  }, [recordsByTitle])
 
   const initChart = useCallback(() => {
     if (!chartRenderData || !canvasRef.current) return

@@ -1,7 +1,8 @@
 import { FilterCore } from '@c/Dashboard/Stat/Filter/FilterCore'
 import { UiLoader, UiSelect } from '@c/Ui'
 import { BackArrowSvg, SettingsSvg } from '@c/Ui/Icons'
-import { toast } from 'react-toastify'
+import dayjs, { Dayjs } from 'dayjs'
+import groupBy from 'lodash/groupBy'
 
 import { ChartRenderer } from './Chart/ChartRenderer'
 import { MobileFilterOperator } from './Filter/MobileFilterOperator'
@@ -10,15 +11,76 @@ export const DashboardStatOperator: React.FC = () => {
   const dispatch = useAppDispatch()
   const { loading, operator, stats } = useAppSelector((store) => store.statsStore)
 
+  const [selectedPeriod, setSelectedPeriod] = useState('currentWeek')
   const params = useParams()
+
+  // filter
+  const curRange = useMemo(() => {
+    let base = dayjs()
+    if (selectedPeriod === 'lastWeek') {
+      base = dayjs().subtract(1, 'week')
+    } else if (selectedPeriod === 'last2Week') {
+      base = dayjs().subtract(2, 'week')
+    }
+
+    const start = base.startOf('week')
+    const end = base.endOf('week')
+
+    return {
+      from: start.format('DD.MM.YYYY'),
+      to: end.format('DD.MM.YYYY'),
+    }
+  }, [selectedPeriod])
+
+  const dateFilterOptions = useMemo(() => {
+    const lastWeek = dayjs().subtract(1, 'week')
+    const last2Week = dayjs().subtract(2, 'week')
+
+    const toDDMM = (x: Dayjs) => {
+      const start = x.startOf('week')
+      const end = x.endOf('week')
+
+      return `${start.format('DD MMM')} - ${end.format('DD MMM')}`
+    }
+
+    return [
+      { label: toDDMM(dayjs()), value: 'currentWeek' },
+      { label: toDDMM(lastWeek), value: 'lastWeek' },
+      { label: toDDMM(last2Week), value: 'last2Week' },
+    ]
+  }, [])
+
+  // Convert Dataset
+  const recordsByTitle = useMemo(() => {
+    if (!stats) return null
+    const records = [] as { title: string; date: string; week: number; value: number }[]
+    Object.keys(stats).forEach((x) => {
+      const djs = dayjs(x, 'DD.MM.YYYY', true)
+      const titlesDto = stats[x]
+
+      Object.keys(titlesDto).forEach((title: string) => {
+        records.push({
+          title: title,
+          date: djs.format('DD MM YYYY'),
+          week: djs.day(),
+          value: +titlesDto[title] || 0,
+        })
+      })
+    })
+
+    return groupBy(records, 'title')
+  }, [stats])
+
+  const thunkParams = useMemo(() => {
+    return {
+      ...curRange,
+      id: params.id || '',
+    }
+  }, [params.id, curRange])
 
   const { initialDataLoaded } = useDateUpdater({
     storeThunk: getOperatorDetailsService,
-    thunkParams: {
-      id: params.id || '',
-      from: '01.07.2023',
-      to: '30.07.2023',
-    },
+    thunkParams,
   })
 
   return (
@@ -75,18 +137,15 @@ export const DashboardStatOperator: React.FC = () => {
           <div className="lk-top-acts__content">
             <div className="lk-top-acts__left">
               <ul className="tabs-def lk-top-acts__tabs">
-                <li className="tabs-def__el active">Эффективность</li>
-                <li className="tabs-def__el">Игры</li>
+                <li className="tabs-def__el">Эффективность</li>
+                <li className="tabs-def__el active">Игры</li>
                 <li className="tabs-def__el">Дополнительно</li>
               </ul>
               <UiSelect
-                value={'range'}
+                value={selectedPeriod}
                 className={'lk-top-acts__select select-def_3'}
-                options={[
-                  { label: '22 июня ... 15 июня<', value: 'range' },
-                  { label: 'B', value: 30 },
-                  { label: 'C', value: 15 },
-                ]}
+                options={dateFilterOptions}
+                onSelect={(v) => setSelectedPeriod(v.value)}
               />
             </div>
             <div className="lk-top-acts__right"></div>
@@ -99,20 +158,27 @@ export const DashboardStatOperator: React.FC = () => {
             <div className="sec-chart__content">
               <div className="sec-chart__left">
                 <div className="block-chart">
-                  {stats && <ChartRenderer data={stats} />}
+                  {recordsByTitle && <ChartRenderer recordsByTitle={recordsByTitle} />}
 
                   <UiLoader active={loading.stats} theme={initialDataLoaded ? 'line' : 'page'} />
                 </div>
               </div>
               <div className="sec-chart__right">
-                <FilterCore />
+                {recordsByTitle && <FilterCore recordsByTitle={recordsByTitle} />}
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <MobileFilterOperator />
+      {recordsByTitle && (
+        <MobileFilterOperator
+          selectedPeriod={selectedPeriod}
+          setSelectedPeriod={setSelectedPeriod}
+          recordsByTitle={recordsByTitle}
+          dateFilterOptions={dateFilterOptions}
+        />
+      )}
     </>
   )
 }

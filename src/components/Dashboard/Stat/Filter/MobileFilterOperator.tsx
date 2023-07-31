@@ -1,9 +1,25 @@
 import { FilterCore } from '@c/Dashboard/Stat/Filter/FilterCore'
+import { Dictionary } from 'lodash'
 
-import { UiCheckbox, UiModal, UiSelect } from '@/components/Ui'
-import { CheckmarkCheckboxSvg } from '@/components/Ui/Icons'
+import { UiModal, UiSelect } from '@/components/Ui'
+import { IChartConvertedDto } from '@/core/interface'
 
-export const MobileFilterOperator: React.FC = () => {
+interface IMobileFilterOperator {
+  recordsByTitle: Dictionary<IChartConvertedDto[]>
+  selectedPeriod: string
+  setSelectedPeriod: React.Dispatch<React.SetStateAction<string>>
+  dateFilterOptions: {
+    label: string
+    value: string
+  }[]
+}
+
+export const MobileFilterOperator: React.FC<IMobileFilterOperator> = ({
+  recordsByTitle,
+  selectedPeriod,
+  setSelectedPeriod,
+  dateFilterOptions,
+}) => {
   return (
     <UiModal name="mobile-operator" modifier="mob">
       <div className="modal-mob__top">
@@ -18,18 +34,15 @@ export const MobileFilterOperator: React.FC = () => {
       <div className="modal-mob__block">
         <div className="modal-mob__block-title">Период</div>
         <UiSelect
-          value={'range'}
+          value={selectedPeriod}
           className={'select-def_full'}
-          options={[
-            { label: '2 часа', value: 'range' },
-            { label: '30 минут', value: 30 },
-            { label: '15 минут', value: 15 },
-          ]}
+          options={dateFilterOptions}
+          onSelect={(v) => setSelectedPeriod(v.value)}
         />
       </div>
       <div className="modal-mob__block">
         <div className="modal-mob__block-title">Отображаемые данные</div>
-        <FilterCore />
+        {recordsByTitle && <FilterCore recordsByTitle={recordsByTitle} />}
       </div>
     </UiModal>
   )
