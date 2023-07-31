@@ -59,11 +59,12 @@ export const DashboardStatOperator: React.FC = () => {
       const titlesDto = stats[x]
 
       Object.keys(titlesDto).forEach((title: string) => {
+        if (!+titlesDto[title]) return
         records.push({
           title: title,
           date: djs.format('DD MM YYYY'),
           week: djs.day(),
-          value: +titlesDto[title] || 0,
+          value: +titlesDto[title],
         })
       })
     })
