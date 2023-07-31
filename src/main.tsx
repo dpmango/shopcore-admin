@@ -13,7 +13,7 @@ console.log(`APP version: ${APP_VERSION}`)
 
 root.render(
   <Provider store={store}>
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.NODE_ENV === 'development' ? '/' : '/managerpanel/'}>
       <App />
     </BrowserRouter>
   </Provider>,
