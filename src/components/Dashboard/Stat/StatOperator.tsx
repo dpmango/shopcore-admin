@@ -116,19 +116,24 @@ export const DashboardStatOperator: React.FC = () => {
               <div className="info-descrp__title">Номер</div>
               <div className="info-descrp__text">{operator?.operator.id}</div>
             </div>
-            <div className="stat-top-info__info-block content-user-3">
-              <div className="content-user-3__text">
-                ? Закреплен <span>за менеджером</span>
+            {operator?.manager && (
+              <div className="stat-top-info__info-block content-user-3">
+                <div className="content-user-3__text">
+                  Закреплен <span>за менеджером</span>
+                </div>
+                <div className="content-user-3__user">
+                  <img
+                    className="content-user-3__img"
+                    src={
+                      operator?.manager.avatar ||
+                      'https://media.istockphoto.com/id/1223671392/vector/default-profile-picture-avatar-photo-placeholder-vector-illustration.jpg?s=170x170&k=20&c=pVkxcoiVUlD0uOzasLU41qdrAQpT1B3vBfKSJQWuNq4='
+                    }
+                    alt={operator?.manager.name}
+                  />
+                  <div className="content-user-3__name">{operator.manager.name}</div>
+                </div>
               </div>
-              <div className="content-user-3__user">
-                <img
-                  className="content-user-3__img"
-                  src="https://randomuser.me/api/portraits/men/74.jpg"
-                  alt=""
-                />
-                <div className="content-user-3__name">Светлана</div>
-              </div>
-            </div>
+            )}
           </div>
         </div>
 

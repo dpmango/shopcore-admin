@@ -18,6 +18,7 @@ export interface IStatOperatorDetailsDto {
   status: boolean
   permissions: IStatPermission[]
   operator: IOperator
+  manager: IOperator | null
 }
 
 export interface IStatPermission {

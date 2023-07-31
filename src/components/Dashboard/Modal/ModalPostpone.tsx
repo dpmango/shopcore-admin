@@ -20,7 +20,7 @@ export const ModalPostpone: React.FC = () => {
     if (error) {
       toast.error(`Ошибка, попробуйте снова`)
     } else {
-      toast.success(data.message)
+      toast.success(data?.message)
       dispatch(closeModal())
     }
   }
