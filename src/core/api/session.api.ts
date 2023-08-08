@@ -10,7 +10,7 @@ export const fetchAuth = async ({ telegram, ...rest }: IAuthPayload) => {
     method: 'GET',
     params: {
       user: JSON.stringify(telegram),
-      redirect: window.location.href,
+      // redirect: window.location.href,
     },
   })) as IApiResponse<IAuthDto>
 
