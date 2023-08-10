@@ -1,5 +1,6 @@
 import { ModalHistory, ModalPostpone, OrderCard } from '@c/Dashboard'
 import { CheckmarkCheckboxSvg, SettingsSvg } from '@c/Ui/Icons'
+import dayjs from 'dayjs'
 
 import { UiLoader, UiSelect } from '@/components/Ui'
 
@@ -7,11 +8,27 @@ import { FilterType } from './Filter/FilterType'
 import { MobileFilter } from './Filter/MobileFilter'
 
 export const DashboardOrders: React.FC = () => {
+  const [activeTab, setActiveTab] = useState('all')
   const { loading, orders, filter } = useAppSelector((store) => store.ordersState)
   const dispatch = useAppDispatch()
 
   // data hooks
   const { initialDataLoaded } = useDateUpdater({ storeThunk: getOrdersService })
+
+  const ordersFiltered = useMemo(() => {
+    if (activeTab === 'hot') {
+      return orders
+        .filter((x) => {
+          const cooldownDjs = dayjs.unix(x.cooldown).unix()
+          const fromnow = dayjs().unix()
+          const diffHH = (fromnow - cooldownDjs) / (60 * 60)
+          return diffHH < 0 && diffHH >= -1
+        })
+        .sort((a, b) => (a.cooldown < b.cooldown ? -1 : 1))
+    }
+
+    return orders
+  }, [orders, activeTab])
 
   return (
     <>
@@ -20,7 +37,7 @@ export const DashboardOrders: React.FC = () => {
           <div className="lk-content__title title-def lk-top-info__el">
             Заказы
             <span className="count-text title-def__count">
-              {loading.orders ? '-' : orders.length}
+              {loading.orders ? '-' : ordersFiltered.length}
             </span>
             <div
               className="lk-top-info__btn btn-modal"
@@ -35,11 +52,17 @@ export const DashboardOrders: React.FC = () => {
           <div className="lk-top-acts__content">
             <div className="lk-top-acts__left">
               <ul className="tabs-def lk-top-acts__tabs">
-                <li className="tabs-def__el active">
+                <li
+                  className={cns('tabs-def__el ', activeTab === 'all' && 'active')}
+                  onClick={() => setActiveTab('all')}
+                >
                   Все
                   <div className="tabs-def__point"></div>
                 </li>
-                <li className="tabs-def__el">
+                <li
+                  className={cns('tabs-def__el ', activeTab === 'hot' && 'active')}
+                  onClick={() => setActiveTab('hot')}
+                >
                   С истекающим временем
                   <div className="tabs-def__point"></div>
                 </li>
@@ -71,7 +94,7 @@ export const DashboardOrders: React.FC = () => {
           </div>
         </div>
         <div className="block-content">
-          {orders.map((x, idx) => (
+          {ordersFiltered.map((x, idx) => (
             <div className="block-content__el" key={idx}>
               <OrderCard {...x} />
             </div>
