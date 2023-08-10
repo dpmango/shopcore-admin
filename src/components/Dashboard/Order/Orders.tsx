@@ -21,8 +21,8 @@ export const DashboardOrders: React.FC = () => {
         .filter((x) => {
           const cooldownDjs = dayjs.unix(x.cooldown).unix()
           const fromnow = dayjs().unix()
-          const diffHH = (fromnow - cooldownDjs) / (60 * 60)
-          return diffHH < 0 && diffHH >= -1
+          const diffMM = (fromnow - cooldownDjs) / 60
+          return diffMM < 0 && diffMM >= -15
         })
         .sort((a, b) => (a.cooldown < b.cooldown ? -1 : 1))
     }
