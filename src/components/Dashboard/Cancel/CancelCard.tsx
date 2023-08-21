@@ -46,10 +46,10 @@ export const CancelCard: React.FC<IOrderCardProps> = ({
               <PointerSvg />
               <span className="btn-def__text">{historyCount}</span>
             </div>
-            <div className="content-btns__btn btn-def">
+            {/* <div className="content-btns__btn btn-def">
               <ClockSvg />
               <span className="btn-def__text">todo</span>
-            </div>
+            </div> */}
             <div className="content-btns__btn btn-def">
               <WarningWhiteSvg />
               <span className="btn-def__text">{problemCount}</span>
