@@ -1,5 +1,6 @@
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import jcc from 'json-case-convertor'
 
 import { IFetchOperatorStatPayload } from '@/core/api/stat.api'
 import { IOperatorStatDto, IStatOperatorDetailsDto, IStatOperatorDto } from '@/core/interface'
@@ -34,12 +35,13 @@ export const getOperatorStatsService = createAsyncThunk('stats/operators', async
 
 export const getOperatorDetailsService = createAsyncThunk(
   'stats/operators/details',
-  async ({ id, from, to }: IFetchOperatorStatPayload) => {
+  async ({ id, from, to, type }: IFetchOperatorStatPayload) => {
     const { data: operator } = await fetchOperatorApi({ id: id || '' })
     const { data: stats } = await fetchOperatorStatsApi({
       id: id || '',
       from: from,
       to: to,
+      type: type,
     })
 
     return { operator, stats }
@@ -77,7 +79,7 @@ export const statsStore = createSlice({
         }>,
       ) => {
         if (action.payload.stats) {
-          state.stats = action.payload.stats
+          state.stats = jcc.camelCaseKeys(action.payload.stats)
         }
         if (action.payload.operator) {
           state.operator = action.payload.operator

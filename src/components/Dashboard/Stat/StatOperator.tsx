@@ -11,6 +11,7 @@ export const DashboardStatOperator: React.FC = () => {
   const dispatch = useAppDispatch()
   const { loading, operator, stats } = useAppSelector((store) => store.statsStore)
 
+  const [activeTab, setActiveTab] = useState<'games' | 'effective'>('games')
   const [selectedPeriod, setSelectedPeriod] = useState('currentWeek')
   const params = useParams()
 
@@ -76,8 +77,9 @@ export const DashboardStatOperator: React.FC = () => {
     return {
       ...curRange,
       id: params.id || '',
+      type: activeTab === 'games' ? 1 : 0,
     }
-  }, [params.id, curRange])
+  }, [params.id, curRange, activeTab])
 
   const { initialDataLoaded } = useDateUpdater({
     storeThunk: getOperatorDetailsService,
@@ -143,9 +145,18 @@ export const DashboardStatOperator: React.FC = () => {
           <div className="lk-top-acts__content">
             <div className="lk-top-acts__left">
               <ul className="tabs-def lk-top-acts__tabs">
-                <li className="tabs-def__el">Эффективность</li>
-                <li className="tabs-def__el active">Игры</li>
-                <li className="tabs-def__el">Дополнительно</li>
+                <li
+                  className={cns('tabs-def__el', activeTab === 'effective' && 'active')}
+                  onClick={() => setActiveTab('effective')}
+                >
+                  Эффективность
+                </li>
+                <li
+                  className={cns('tabs-def__el', activeTab === 'games' && 'active')}
+                  onClick={() => setActiveTab('games')}
+                >
+                  Игры
+                </li>
               </ul>
               <UiSelect
                 value={selectedPeriod}

@@ -9,11 +9,9 @@ interface IFilterCore {
 
 export const FilterCore: React.FC<IFilterCore> = ({ recordsByTitle }) => {
   const options = useMemo(() => {
-    console.log({ recordsByTitle })
-
     return Object.keys(recordsByTitle).map((x) => {
       const data = recordsByTitle[x]
-      console.log({ data })
+
       const counter = data.reduce((acc, x) => {
         acc = acc + x.value
         return acc

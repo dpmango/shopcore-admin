@@ -2381,6 +2381,13 @@ jsesc@^2.5.1:
   resolved "https://registry.npmjs.org/jsesc/-/jsesc-2.5.2.tgz"
   integrity sha512-OYu7XEzjkCQ3C5Ps3QIZsQfNpqoJyZZA99wd9aWd05NCtC5pWOkShK2mkL6HXQR6/Cy2lbNdPlZBpuQHXE63gA==
 
+json-case-convertor@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/json-case-convertor/-/json-case-convertor-1.4.0.tgz#d29b629f1b2c272658e4d195598513ee8732b3b4"
+  integrity sha512-tAv+40TEHyr0XqLa94iRCBloW1jI1m5rvbKqYP29IiSELIrkaqC2NonWy6n7KaAkfZz/IkvHbqzrIqgjEVONNQ==
+  dependencies:
+    lodash "^4.17.21"
+
 json-parse-even-better-errors@^2.3.0:
   version "2.3.1"
   resolved "https://registry.npmjs.org/json-parse-even-better-errors/-/json-parse-even-better-errors-2.3.1.tgz"

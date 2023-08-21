@@ -34,17 +34,19 @@ export interface IFetchOperatorStatPayload {
   id: string
   from: string
   to: string
+  type: 0 | 1
 }
 
 // [get] Инфа об операторе и его доступах
-export const fetchOperatorStatsApi = async ({ id, from, to }: IFetchOperatorStatPayload) => {
+export const fetchOperatorStatsApi = async ({ id, from, to, type }: IFetchOperatorStatPayload) => {
   const { data, error } = (await api(`operator/stats`, {
     method: 'GET',
-    params: {
+    params: buildParams({
       id,
       from,
       to,
-    },
+      type,
+    }),
   })) as IApiResponse<IOperatorStatDto>
 
   return { data, error: !data }

@@ -3,7 +3,7 @@ export const buildParams = (reqObj: { [key: string]: any }): { [key: string]: st
 
   Object.keys(reqObj).forEach((key) => {
     const objVal = reqObj[key]
-    if (objVal) {
+    if (objVal !== undefined) {
       params = {
         ...params,
         [key]: objVal.toString(),
