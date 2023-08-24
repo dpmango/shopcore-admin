@@ -126,6 +126,7 @@
     "orderPostproneApi": true,
     "fetchOperatorStatsApi": true,
     "fetchOperatorsApi": true,
-    "getOperatorDetailsService": true
+    "getOperatorDetailsService": true,
+    "uniqueArray": true
   }
 }

@@ -38,6 +38,9 @@ export const AuthJWT: React.FC = () => {
           onAuthCallback={handleTgAuth}
           requestAccess={'write'}
         />
+        <div className="chat-auth__minion">
+          <a href="https://shopcore.ru/ticketsv2/">Перейти на tickets (v2)</a>
+        </div>
         <div className="chat-auth__action">
           <h5>Или укажите свой токен</h5>
           <input
@@ -50,7 +53,7 @@ export const AuthJWT: React.FC = () => {
           <button className="btn chat-auth__btn" onClick={() => onAuthSuccess(authToken as string)}>
             Войти c токеном
           </button>
-        </div>{' '}
+        </div>
       </div>
     </div>
   )

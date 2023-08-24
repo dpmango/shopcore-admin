@@ -3,6 +3,7 @@ import { CheckmarkCheckboxSvg, SettingsSvg } from '@c/Ui/Icons'
 import dayjs from 'dayjs'
 
 import { UiLoader, UiSelect } from '@/components/Ui'
+import { IOrderDto } from '@/core/interface'
 
 import { FilterType } from './Filter/FilterType'
 import { MobileFilter } from './Filter/MobileFilter'
@@ -13,11 +14,36 @@ export const DashboardOrders: React.FC = () => {
   const dispatch = useAppDispatch()
 
   // data hooks
+  const [activeTheme, setActiveTheme] = useState('all')
+
   const { initialDataLoaded } = useDateUpdater({ storeThunk: getOrdersService })
 
+  const themeOptions = useMemo(() => {
+    const all = { label: 'Все', value: 'all' }
+
+    return orders.length
+      ? [
+          all,
+          ...uniqueArray(
+            orders.map((x) => ({
+              label: x.where.name,
+              value: x.where.name,
+            })),
+          ),
+        ]
+      : [all]
+  }, [orders])
+
+  const handleSelectChangeTheme = useCallback((v: any) => {
+    if (!Array.isArray(v)) {
+      setActiveTheme(v.value)
+    }
+  }, [])
+
   const ordersFiltered = useMemo(() => {
+    let filtered = orders
     if (activeTab === 'hot') {
-      return orders
+      filtered = orders
         .filter((x) => {
           const cooldownDjs = dayjs.unix(x.cooldown).unix()
           const fromnow = dayjs().unix()
@@ -27,8 +53,12 @@ export const DashboardOrders: React.FC = () => {
         .sort((a, b) => (a.cooldown < b.cooldown ? -1 : 1))
     }
 
-    return orders
-  }, [orders, activeTab])
+    if (activeTheme !== 'all') {
+      filtered = filtered.filter((x) => x.where.name === activeTheme)
+    }
+
+    return filtered
+  }, [orders, activeTab, activeTheme])
 
   return (
     <>
@@ -68,18 +98,15 @@ export const DashboardOrders: React.FC = () => {
                 </li>
               </ul>
               <UiSelect
-                value={'all'}
+                value={activeTheme}
                 className="lk-top-acts__select"
-                options={[
-                  { label: 'Все темы', value: 'all' },
-                  { label: '10 минут', value: 10 },
-                  { label: '5 минут', value: 5 },
-                ]}
+                options={themeOptions}
+                onSelect={handleSelectChangeTheme}
               />
             </div>
             <div className="lk-top-acts__right">
               <div className="block-select">
-                <div className="block-select__title">Напоминать за</div>
+                {/* <div className="block-select__title">Напоминать за</div>
                 <UiSelect
                   value={15}
                   className="select-def_2"
@@ -88,7 +115,7 @@ export const DashboardOrders: React.FC = () => {
                     { label: '10 минут', value: 10 },
                     { label: '5 минут', value: 5 },
                   ]}
-                />
+                /> */}
               </div>
             </div>
           </div>

@@ -91,7 +91,8 @@ body {
   background-color: #fff;
 }
 
-.select-def__text {
+.select-def__text,
+.select-def__val {
   color: #191b22;
 }
 
@@ -106,8 +107,11 @@ body {
 }
 
 .select-def__dropdown {
+  max-height: calc(100vh - 160px);
   background-color: #fff;
   box-shadow: 0 10px 20px 0 rgb(0 0 0 / 20%);
+  overflow-y: auto;
+  white-space: nowrap;
 }
 
 .select-def__dropdown-el {

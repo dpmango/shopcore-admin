@@ -45,6 +45,13 @@
     cursor: pointer;
   }
 
+  &__minion {
+    margin-top: 12px;
+    a {
+      color: white;
+    }
+  }
+
   &__action {
     display: flex;
     flex-wrap: wrap;

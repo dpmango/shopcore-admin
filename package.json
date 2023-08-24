@@ -17,7 +17,6 @@
   },
   "pre-commit": "lint",
   "dependencies": {
-    "@react-spring/web": "^9.7.3",
     "@reduxjs/toolkit": "^1.9.5",
     "@uidotdev/usehooks": "^2.0.1",
     "chart.js": "^4.3.0",

@@ -98,6 +98,7 @@ declare global {
   const store: typeof import('./src/core/store')['store']
   const timestampToMinutes: typeof import('./src/core/utils/date')['timestampToMinutes']
   const transferTicket: typeof import('./src/core/api/chat.api')['transferTicket']
+  const uniqueArray: typeof import('./src/core/utils/array')['uniqueArray']
   const useAppDispatch: typeof import('./src/core/store')['useAppDispatch']
   const useAppSelector: typeof import('./src/core/store')['useAppSelector']
   const useCallback: typeof import('react')['useCallback']

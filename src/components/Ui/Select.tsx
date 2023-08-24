@@ -1,5 +1,4 @@
 import { CaretSvg, SearchSvg } from '@c/Ui/Icons'
-import { animated, useSpring } from '@react-spring/web'
 
 // import './select.sass';
 
@@ -30,9 +29,6 @@ export const Select: React.FC<ISelectProps> = ({
   onSelect,
 }) => {
   const [opened, setOpened] = useState<boolean>(false)
-  const [springs, api] = useSpring(() => ({
-    from: { height: 0, opacity: 0 },
-  }))
 
   const wrapperRef = useRef(null)
 
@@ -46,29 +42,6 @@ export const Select: React.FC<ISelectProps> = ({
     onSelect && onSelect(option)
     setOpened(false)
   }
-
-  // spring
-  useEffect(() => {
-    const closedStyle = {
-      height: 0,
-      opacity: 0,
-    }
-    const openedStyle = {
-      height: 150,
-      opacity: 1,
-    }
-    if (opened) {
-      api.start({
-        from: { ...closedStyle },
-        to: { ...openedStyle },
-      })
-    } else {
-      api.start({
-        from: { ...openedStyle },
-        to: { ...closedStyle },
-      })
-    }
-  }, [opened])
 
   return (
     <div
@@ -87,12 +60,7 @@ export const Select: React.FC<ISelectProps> = ({
         <div className="block-select__text select-def__val">{currentTitle}</div>
         <CaretSvg />
       </div>
-      <animated.ul
-        className={cns('select-def__dropdown', opened && '_active')}
-        style={{
-          ...springs,
-        }}
-      >
+      <ul className={cns('select-def__dropdown', opened && '_active')}>
         {options?.length ? (
           options.map((option) => (
             <div
@@ -111,7 +79,7 @@ export const Select: React.FC<ISelectProps> = ({
         ) : (
           <span>{'Пусто'}</span>
         )}
-      </animated.ul>
+      </ul>
     </div>
   )
 }
