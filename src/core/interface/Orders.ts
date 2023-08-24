@@ -6,6 +6,7 @@ export interface IOrderDto {
   cooldown: number
   historyCount: number
   problemCount: number
+  postponed: number
   item: IOrderItem
   where: IOrderWhere
 }

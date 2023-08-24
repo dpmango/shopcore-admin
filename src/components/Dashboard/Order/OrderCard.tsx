@@ -13,6 +13,7 @@ export const OrderCard: React.FC<IOrderCardProps> = ({
   created,
   historyCount,
   problemCount,
+  postponed,
 }) => {
   const dispatch = useAppDispatch()
 
@@ -70,7 +71,7 @@ export const OrderCard: React.FC<IOrderCardProps> = ({
             onClick={() => dispatch(setModal({ name: 'postpone', params: { id, created } }))}
           >
             <div className="btn-count__left">Отложить</div>
-            <div className="btn-count__right">?</div>
+            <div className="btn-count__right">{postponed}</div>
           </div>
           <HistoryBtn
             className="order-el__btnmob"

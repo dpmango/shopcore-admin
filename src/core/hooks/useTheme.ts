@@ -13,8 +13,6 @@ export const useTheme = () => {
       localStorageSet('theme-admin', 'light')
       dispatch(setTheme('light'))
     }
-
-    // TODO + plus charts charts js colors
   }, [])
 
   const setInitialTheme = useCallback(() => {
