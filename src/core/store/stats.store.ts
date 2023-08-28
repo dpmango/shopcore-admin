@@ -9,6 +9,7 @@ export interface IStats {
   operators: IStatOperatorDto[]
   operator: IStatOperatorDetailsDto | null
   stats: IOperatorStatDto | null
+  filter: string[]
   loading: {
     list: boolean
     operator: boolean
@@ -20,6 +21,7 @@ const initialState: IStats = {
   operators: [],
   operator: null,
   stats: null,
+  filter: [],
   loading: {
     list: false,
     operator: false,
@@ -51,7 +53,12 @@ export const getOperatorDetailsService = createAsyncThunk(
 export const statsStore = createSlice({
   name: 'stats',
   initialState,
-  reducers: {},
+  reducers: {
+    setFilterStat(state, action: PayloadAction<string[]>) {
+      state.filter = [...action.payload]
+    },
+  },
+
   extraReducers: (builder) => {
     builder.addCase(getOperatorStatsService.pending, (state) => {
       state.loading.list = true
@@ -91,6 +98,6 @@ export const statsStore = createSlice({
   },
 })
 
-// export const { setFilter } = ordersStore.actions
+export const { setFilterStat } = statsStore.actions
 
 export default statsStore.reducer

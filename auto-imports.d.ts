@@ -86,6 +86,7 @@ declare global {
   const sessionStore: typeof import('./src/core/store/session.store')['default']
   const setActiveDialog: typeof import('./src/core/store/chat.store')['setActiveDialog']
   const setFilter: typeof import('./src/core/store/orders.store')['setFilter']
+  const setFilterStat: typeof import('./src/core/store/stats.store')['setFilterStat']
   const setModal: typeof import('./src/core/store/session.store')['setModal']
   const setSimulator: typeof import('./src/core/store/chat.store')['setSimulator']
   const setStateCoin: typeof import('./src/core/store/chat.store')['setStateCoin']

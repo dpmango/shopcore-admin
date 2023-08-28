@@ -127,6 +127,7 @@
     "fetchOperatorStatsApi": true,
     "fetchOperatorsApi": true,
     "getOperatorDetailsService": true,
-    "uniqueArray": true
+    "uniqueArray": true,
+    "setFilterStat": true
   }
 }

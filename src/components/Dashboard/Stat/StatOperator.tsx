@@ -9,7 +9,7 @@ import { MobileFilterOperator } from './Filter/MobileFilterOperator'
 
 export const DashboardStatOperator: React.FC = () => {
   const dispatch = useAppDispatch()
-  const { loading, operator, stats } = useAppSelector((store) => store.statsStore)
+  const { loading, operator, stats, filter } = useAppSelector((store) => store.statsStore)
 
   const [activeTab, setActiveTab] = useState<'games' | 'effective'>('games')
   const [selectedPeriod, setSelectedPeriod] = useState('currentWeek')
@@ -85,6 +85,10 @@ export const DashboardStatOperator: React.FC = () => {
     storeThunk: getOperatorDetailsService,
     thunkParams,
   })
+
+  useEffect(() => {
+    dispatch(setFilterStat([]))
+  }, [])
 
   return (
     <>

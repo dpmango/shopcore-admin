@@ -15,10 +15,17 @@ export const ChartRenderer: React.FC<IChartRenderer> = ({ recordsByTitle }) => {
   const canvasRef = useRef(null)
   const chartInstance = useRef<any | null>(null)
 
+  const { filter } = useAppSelector((store) => store.statsStore)
+
   const chartRenderData = useMemo(() => {
     if (!recordsByTitle) return
+
+    const filteredTitles = filter.length
+      ? Object.keys(recordsByTitle).filter((x) => filter.includes(x))
+      : Object.keys(recordsByTitle)
+
     // create dataset by weekdays 0 - 6
-    const dataSets = Object.keys(recordsByTitle).map((x, idx) => {
+    const dataSets = filteredTitles.map((x, idx) => {
       const titleRecords = recordsByTitle[x]
 
       const markupLabels = [...new Array(7)].map((_, idx) => {
@@ -45,8 +52,6 @@ export const ChartRenderer: React.FC<IChartRenderer> = ({ recordsByTitle }) => {
       }
     })
 
-    // console.log({ dataSets })
-
     const chartData = {
       labels: ['ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ', 'ВС'],
       padding: { left: 110 },
@@ -55,7 +60,7 @@ export const ChartRenderer: React.FC<IChartRenderer> = ({ recordsByTitle }) => {
     }
 
     return chartData as ChartData
-  }, [recordsByTitle])
+  }, [recordsByTitle, filter])
 
   const initChart = useCallback(() => {
     if (!chartRenderData || !canvasRef.current) return
@@ -111,14 +116,12 @@ export const ChartRenderer: React.FC<IChartRenderer> = ({ recordsByTitle }) => {
 
               const position = context.chart.canvas.getBoundingClientRect()
 
-              // const bodyFont = Chart.helpers.toFont(tooltipModel.options.bodyFont)
-
-              // $('.tooltip-def__title').text('')
-              // $('.tooltip-def__date').text('')
-              // $('.tooltip-def__val').text('')
-              // $('.tooltip-def__title').text(title)
-              // $('.tooltip-def__date').text(date)
-              // $('.tooltip-def__val').text(val)
+              const $tt1 = document.querySelector('.tooltip-def__title')
+              if ($tt1) $tt1.innerHTML = title
+              const $tt2 = document.querySelector('.tooltip-def__date')
+              // if ($tt2) $tt2.innerHTML = date
+              const $tt3 = document.querySelector('.tooltip-def__value')
+              if ($tt3) $tt3.innerHTML = val
 
               // Display, position, and set styles for font
               tooltipEl.style.opacity = '1'
@@ -126,7 +129,7 @@ export const ChartRenderer: React.FC<IChartRenderer> = ({ recordsByTitle }) => {
               tooltipEl.style.position = 'absolute'
               tooltipEl.style.left = position.left + window.pageXOffset + tooltipModel.caretX + 'px'
               tooltipEl.style.top = position.top + window.pageYOffset + tooltipModel.caretY + 'px'
-              // tooltipEl.style.font = bodyFont.string
+
               tooltipEl.style.padding = tooltipModel.padding + 'px ' + tooltipModel.padding + 'px'
               tooltipEl.style.pointerEvents = 'none'
             },

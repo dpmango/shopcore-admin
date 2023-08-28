@@ -8,6 +8,9 @@ interface IFilterCore {
 }
 
 export const FilterCore: React.FC<IFilterCore> = ({ recordsByTitle }) => {
+  const dispatch = useAppDispatch()
+  const { filter } = useAppSelector((store) => store.statsStore)
+
   const options = useMemo(() => {
     return Object.keys(recordsByTitle).map((x) => {
       const data = recordsByTitle[x]
@@ -24,37 +27,30 @@ export const FilterCore: React.FC<IFilterCore> = ({ recordsByTitle }) => {
     })
   }, [recordsByTitle])
 
+  const handleToggle = useCallback(
+    (val: string) => {
+      if (filter.includes(val)) {
+        dispatch(setFilterStat(filter.filter((x) => x !== val)))
+      } else {
+        dispatch(setFilterStat([...filter, val]))
+      }
+    },
+    [filter],
+  )
+
   return (
     <div className="block-checkboxes-2">
       {options.map((x, idx) => (
         <div className="block-checkboxes-2__el" key={idx}>
           <UiCheckbox
             baseName="checkbox-el-3"
-            isChecked={false}
+            isChecked={filter.includes(x.title)}
             counter={x.counter}
-            onChange={() => null}
+            onChange={() => handleToggle(x.title)}
             data-style="--color: #f5d48b"
           >
             {x.title}
           </UiCheckbox>
-
-          {/* <div className="stat-descrp">
-            <div className="stat-descrp__el">
-              <div className="stat-descrp__text">
-                <span>43</span> в АФК
-              </div>
-            </div>
-            <div className="stat-descrp__el">
-              <div className="stat-descrp__text">
-                <span>43</span> отказался
-              </div>
-            </div>
-            <div className="stat-descrp__el">
-              <div className="stat-descrp__text">
-                <span>43</span> отменил
-              </div>
-            </div>
-          </div> */}
         </div>
       ))}
     </div>
