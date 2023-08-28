@@ -23,9 +23,17 @@ export const ModalCancelConfirm: React.FC = () => {
       toast.error(`Ошибка, попробуйте снова`)
     } else {
       toast.success(`Подтверждена отмена заказа ${modalParams.id}`)
+
       dispatch(closeModal())
     }
   }
+
+  useEffect(() => {
+    if (modal === null) {
+      setLike(null)
+      setComment('')
+    }
+  }, [modal])
 
   return (
     <UiModal name="confirm-cancel" modifier="confirm">
@@ -45,6 +53,7 @@ export const ModalCancelConfirm: React.FC = () => {
               className="estimation-btn__inp"
               type="radio"
               name="order"
+              checked={false}
               onChange={(e) => {
                 e.preventDefault()
                 e.stopPropagation()
@@ -65,6 +74,7 @@ export const ModalCancelConfirm: React.FC = () => {
               className="estimation-btn__inp"
               type="radio"
               name="order"
+              checked={false}
               onChange={(e) => {
                 e.preventDefault()
                 e.stopPropagation()

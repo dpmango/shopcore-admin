@@ -18,7 +18,7 @@ export const MobileFilter: React.FC = () => {
         <div className="modal-mob__block-title">Отображать</div>
         <FilterType name="" baseName="checkbox-el-2" />
       </div>
-      <div className="modal-mob__block">
+      {/* <div className="modal-mob__block">
         <div className="modal-mob__block-title">Напоминать за</div>
         <UiSelect
           value={15}
@@ -29,7 +29,7 @@ export const MobileFilter: React.FC = () => {
             { label: '5 минут', value: 5 },
           ]}
         />
-      </div>
+      </div> */}
     </UiModal>
   )
 }

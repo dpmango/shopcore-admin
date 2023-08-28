@@ -5,7 +5,7 @@ export const getRandomInt = (min: number, max: number) => {
   return Math.floor(Math.random() * (max - min + 1)) + min
 }
 
-export const APP_VERSION = '2.0.2'
+export const APP_VERSION = '2.0.4'
 
 export const LOG = {
   log: (...args: any) => {

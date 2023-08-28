@@ -65,13 +65,15 @@ export const DashboardStat: React.FC = () => {
     // labels
     const curWeekDate = dayjs()
     const prevWeelDate = dayjs().subtract(1, 'week')
+    const prev2WeelDate = dayjs().subtract(2, 'week')
+
     const currentWeekDate = {
-      start: curWeekDate.startOf('week').format('DD MMM'),
-      end: curWeekDate.endOf('week').format('DD MMM'),
+      start: prevWeelDate.day(6).format('DD MMM'),
+      end: curWeekDate.day(5).format('DD MMM'),
     }
     const prevWeekDate = {
-      start: prevWeelDate.startOf('week').format('DD MMM'),
-      end: prevWeelDate.endOf('week').format('DD MMM'),
+      start: prev2WeelDate.day(6).format('DD MMM'),
+      end: prevWeelDate.day(5).format('DD MMM'),
     }
 
     return [

@@ -231,7 +231,7 @@
     }
   }
 
-  &__inp:checked {
+  &._active {
     & + .estimation-btn__dec {
       background: #1f9c56;
 
@@ -242,8 +242,8 @@
   }
 
   &_red {
-    .estimation-btn__inp:checked {
-      & + .estimation-btn__dec {
+    &._active {
+      .estimation-btn__dec {
         background: #c1352c;
 
         path {

@@ -51,6 +51,8 @@ export const DashboardOrders: React.FC = () => {
           return diffMM < 0 && diffMM >= -15
         })
         .sort((a, b) => (a.cooldown < b.cooldown ? -1 : 1))
+    } else if (activeTab === 'my') {
+      return []
     }
 
     if (activeTheme !== 'all') {
@@ -88,6 +90,13 @@ export const DashboardOrders: React.FC = () => {
                 >
                   Все
                   <div className="tabs-def__point"></div>
+                </li>
+                <li
+                  className={cns('tabs-def__el ', activeTab === 'my' && 'active')}
+                  onClick={() => setActiveTab('my')}
+                >
+                  Мои операторы
+                  {/* <div className="tabs-def__point"></div> */}
                 </li>
                 <li
                   className={cns('tabs-def__el ', activeTab === 'hot' && 'active')}

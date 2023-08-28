@@ -5,7 +5,7 @@ import { ICancellationDto, IOrderDto } from '@/core/interface'
 import type { RootState } from '@/core/store'
 
 interface IFilter {
-  type: 'afk' | 'work' | 'problem' | null
+  type: 'afk' | 'work' | 'problem' | 'inque' | null
 }
 
 export interface IOrders {
