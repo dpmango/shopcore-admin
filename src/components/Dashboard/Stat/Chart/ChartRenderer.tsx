@@ -119,8 +119,8 @@ export const ChartRenderer: React.FC<IChartRenderer> = ({ recordsByTitle }) => {
               const $tt1 = document.querySelector('.tooltip-def__title')
               if ($tt1) $tt1.innerHTML = title
               const $tt2 = document.querySelector('.tooltip-def__date')
-              // if ($tt2) $tt2.innerHTML = date
-              const $tt3 = document.querySelector('.tooltip-def__value')
+              if ($tt2) $tt2.innerHTML = date
+              const $tt3 = document.querySelector('.tooltip-def__val')
               if ($tt3) $tt3.innerHTML = val
 
               // Display, position, and set styles for font
