@@ -52,7 +52,7 @@ export const DashboardOrders: React.FC = () => {
         })
         .sort((a, b) => (a.cooldown < b.cooldown ? -1 : 1))
     } else if (activeTab === 'my') {
-      return []
+      filtered = orders.filter((x) => x.tags.includes('myoperator'))
     }
 
     if (activeTheme !== 'all') {

@@ -9,6 +9,7 @@ export interface IOrderDto {
   postponed: number
   item: IOrderItem
   where: IOrderWhere
+  tags: string[]
 }
 
 export interface ICancellationDto extends IOrderDto {
