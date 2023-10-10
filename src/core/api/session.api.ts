@@ -1,3 +1,5 @@
+import Cookies from 'js-cookie'
+
 import type { IApiResponse, IAuthDto, ITelegramAuthDto, IUser, IWhoisDto } from '@/core/interface'
 
 // Auth (авторизация от ТГ)
@@ -15,6 +17,21 @@ export const fetchAuth = async ({ telegram, ...rest }: IAuthPayload) => {
   })) as IApiResponse<IAuthDto>
 
   return { data, error: !data }
+}
+
+export const refreshAuth = async () => {
+  const refreshToken = Cookies.get('refresh-ticketv2')
+
+  const { data, error } = (await api(`https://shopcore.ru/login/refresh`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json' as string,
+      //@ts-ignore
+      Authorization: refreshToken && `Bearer ${refreshToken}`,
+    },
+  })) as IApiResponse<IAuthDto>
+
+  return { data, error: !!data }
 }
 
 export const getUser = async () => {
