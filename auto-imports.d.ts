@@ -79,6 +79,7 @@ declare global {
   const ordersStore: typeof import('./src/core/store/orders.store')['default']
   const pad: typeof import('./src/core/utils/number')['pad']
   const postMessage: typeof import('./src/core/api/chat.api')['postMessage']
+  const refreshAuth: typeof import('./src/core/api/session.api')['refreshAuth']
   const refseTicket: typeof import('./src/core/api/chat.api')['refseTicket']
   const resetUser: typeof import('./src/core/store/session.store')['resetUser']
   const saveOperatorAccessApi: typeof import('./src/core/api/stat.api')['saveOperatorAccessApi']

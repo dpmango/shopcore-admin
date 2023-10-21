@@ -12,8 +12,8 @@ export const AuthJWT: React.FC = () => {
 
   const handleTgAuth = async (auth: ITelegramAuthDto) => {
     const { data } = await fetchAuth({ telegram: auth })
-    if (data?.access_token) {
-      onAuthSuccess(data?.access_token)
+    if (data) {
+      onAuthSuccess(data)
     }
   }
 
@@ -50,7 +50,10 @@ export const AuthJWT: React.FC = () => {
             onChange={(e) => setAuthToken(e.target.value)}
           />
 
-          <button className="btn chat-auth__btn" onClick={() => onAuthSuccess(authToken as string)}>
+          <button
+            className="btn chat-auth__btn"
+            onClick={() => onAuthSuccess({ access_token: authToken })}
+          >
             Войти c токеном
           </button>
         </div>

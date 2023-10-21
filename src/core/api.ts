@@ -75,6 +75,7 @@ export const api = async (
 
     if (err?.status === 401) {
       Cookies.remove('auth-ticketv2')
+      Cookies.remove('refresh-ticketv2')
 
       window && window.location.reload()
     }
