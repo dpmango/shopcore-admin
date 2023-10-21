@@ -26,8 +26,8 @@ export const DashboardOrders: React.FC = () => {
           all,
           ...uniqueArray(
             orders.map((x) => ({
-              label: x.where.name,
-              value: x.where.name,
+              label: x.item.type,
+              value: x.item.type,
             })),
           ),
         ]
@@ -56,7 +56,7 @@ export const DashboardOrders: React.FC = () => {
     }
 
     if (activeTheme !== 'all') {
-      filtered = filtered.filter((x) => x.where.name === activeTheme)
+      filtered = filtered.filter((x) => x.item.type === activeTheme)
     }
 
     return filtered
