@@ -50,6 +50,9 @@ export const ModalPostpone: React.FC = () => {
           value={delayPeriod}
           widthLimiter={true}
           options={[
+            { label: '2 дня', value: 2 * 24 * 60 },
+            { label: '1 день', value: 24 * 60 },
+            { label: '6 часов', value: 6 * 60 },
             { label: '2 часа', value: 120 },
             { label: '1 час', value: 60 },
             { label: '30 минут', value: 30 },

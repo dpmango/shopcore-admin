@@ -217,6 +217,12 @@ body {
 
 .modal-content {
   background-color: #f8f8f8;
+
+  &__input {
+    color: #191b22;
+    background: #fff;
+    border: 1px solid rgb(25 27 34 / 15%);
+  }
 }
 
 .content-info-2 {
