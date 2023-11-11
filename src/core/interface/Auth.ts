@@ -3,4 +3,5 @@ export interface IUser {
   givenName: string
   role: string
   telegramPhotoURL: string
+  balance: number
 }

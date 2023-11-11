@@ -9,6 +9,7 @@ import { MobileFilter } from './Filter/MobileFilter'
 
 export const DashboardStat: React.FC = () => {
   const { operators, loading } = useAppSelector((store) => store.statsStore)
+  const { user } = useAppSelector((store) => store.sesionState)
   const dispatch = useAppDispatch()
 
   // table filter
@@ -59,6 +60,7 @@ export const DashboardStat: React.FC = () => {
   // stats
   const statsComputed = useMemo(() => {
     // compute
+    const today = operators.reduce((acc, x) => acc + x.stats.today || 0, 0)
     const currentWeek = operators.reduce((acc, x) => acc + x.stats.currentWeek || 0, 0)
     const prevWeek = operators.reduce((acc, x) => acc + x.stats.lastWeek || 0, 0)
 
@@ -78,6 +80,11 @@ export const DashboardStat: React.FC = () => {
 
     return [
       {
+        label: 'Баланс',
+        date: ``,
+        value: formatPrice(user?.balance, 0) + ' ₽',
+      },
+      {
         label: 'Выполнено заказов за текущую рабочую неделю',
         date: `${currentWeekDate.start} ... ${currentWeekDate.end}`,
         value: formatPrice(currentWeek, 0),
@@ -87,8 +94,13 @@ export const DashboardStat: React.FC = () => {
         date: `${prevWeekDate.start} ... ${prevWeekDate.end}`,
         value: formatPrice(prevWeek, 0),
       },
+      {
+        label: 'Выполнено заказов за сегодня',
+        date: `${curWeekDate.format('DD MMM')}`,
+        value: formatPrice(today, 0),
+      },
     ]
-  }, [operators])
+  }, [operators, user])
 
   // data hooks
   const { initialDataLoaded } = useDateUpdater({ storeThunk: getOperatorStatsService })
